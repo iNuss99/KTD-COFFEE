@@ -112,8 +112,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Tạo HTML danh sách card sản phẩm
     productGrid.innerHTML = filtered.map(product => {
       const isOutOfStock = !product.inStock;
+      
+      // Rút gọn hiển thị rating (VD: "4.9★ 185+ đánh giá" -> "4.9 ★ (185+)")
+      let formattedRating = product.rating || '';
+      const matchRating = formattedRating.match(/^([\d.]+)\s*★?\s*(?:([\d++]+)\s*đánh giá)?/);
+      if (matchRating && matchRating[1]) {
+        formattedRating = matchRating[2] ? `${matchRating[1]} ★ (${matchRating[2]})` : `${matchRating[1]} ★`;
+      }
+
+      const badgeTypeClass = product.badgeType === 'green' ? 'badge-green' : product.badgeType === 'red' ? 'badge-red' : 'badge-gold';
       const badgeHtml = product.badge ? `
-        <span class="${product.badgeType === 'gold' ? 'rating-badge' : product.badgeType === 'green' ? 'discount-badge discount-badge--green' : 'discount-badge'}">
+        <span class="product-badge ${badgeTypeClass}" title="${product.badge}">
           ${product.badge}
         </span>
       ` : '';
@@ -122,7 +131,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         <article class="product-card ${isOutOfStock ? 'out-of-stock' : ''}" data-id="${product.id}">
           <div class="product-card-top">
             <div class="card-badges">
-              <span class="rating-badge">${product.rating}</span>
+              <span class="rating-badge">${formattedRating}</span>
               ${badgeHtml}
             </div>
 

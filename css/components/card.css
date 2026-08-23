@@ -93,34 +93,95 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 6px;
   pointer-events: none;
   z-index: 2;
+  max-width: calc(100% - 20px);
 }
 
 .rating-badge {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  padding: 4px 8px;
-  background: rgba(255, 255, 255, 0.94);
+  gap: 3px;
+  padding: 4px 9px;
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-radius: var(--radius-full);
-  font-size: var(--font-size-caption);
+  font-size: 0.72rem;
   font-weight: 700;
-  color: var(--color-gold-text);
-  box-shadow: var(--shadow-xs);
-  border: 1px solid rgba(0, 0, 0, 0.04);
+  color: #B45309;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
+.product-badge,
 .discount-badge {
   display: inline-flex;
   align-items: center;
-  padding: 4px 8px;
-  background: var(--color-primary);
-  color: white;
+  padding: 4px 9px;
   border-radius: var(--radius-full);
-  font-size: 0.75rem;
-  font-weight: 800;
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 110px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  border: 1px solid transparent;
+  flex-shrink: 1;
+}
+
+/* Badge Semantic Color Palette */
+.badge-gold {
+  background: rgba(254, 243, 199, 0.94);
+  color: #B45309;
+  border-color: rgba(245, 158, 11, 0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.badge-red,
+.discount-badge {
+  background: rgba(254, 226, 226, 0.94);
+  color: #DC2626;
+  border-color: rgba(239, 68, 68, 0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.badge-green,
+.discount-badge--green {
+  background: rgba(209, 250, 229, 0.94);
+  color: #059669;
+  border-color: rgba(16, 185, 129, 0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+@media (max-width: 479px) {
+  .card-badges {
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    gap: 4px;
+    max-width: calc(100% - 16px);
+  }
+
+  .rating-badge {
+    padding: 3px 7px;
+    font-size: 0.6875rem;
+  }
+
+  .product-badge,
+  .discount-badge {
+    padding: 3px 7px;
+    font-size: 0.6875rem;
+    max-width: 95px;
+  }
 }
 
 /* Card Content */
