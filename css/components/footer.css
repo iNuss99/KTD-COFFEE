@@ -170,16 +170,28 @@ footer[data-animate].visible {
 
 .footer-social-links {
   display: flex;
-  gap: 16px;
+  align-items: center;
+  gap: 12px;
+  margin-top: var(--space-3);
 }
 
 .footer-social-link {
-  color: #888888;
-  transition: color var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #222222;
+  color: #D1D5DB;
+  transition: all var(--transition-fast);
 }
 
 .footer-social-link:hover {
+  background: #E58E26;
   color: #ffffff;
+  transform: translateY(-2px);
 }
+
 
 
