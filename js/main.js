@@ -946,13 +946,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   });
 
-  const promoSubscribeBtn = document.querySelector('.promo-cta-box button');
-  if (promoSubscribeBtn) {
-    promoSubscribeBtn.addEventListener('click', () => {
-      const emailInput = document.querySelector('.promo-cta-box input[type="email"]');
-      if (emailInput && emailInput.value.includes('@')) {
+  const promoForm = document.querySelector('.promo-cta-form');
+  if (promoForm) {
+    promoForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const emailInput = promoForm.querySelector('input[type="email"]');
+      if (emailInput && emailInput.value.trim() && emailInput.value.includes('@')) {
         showToast('🎉 Đăng ký thành công! Mã giảm 30.000đ (KTDCOFFEE30) đã được gửi tới hòm thư của bạn.', 'success');
         emailInput.value = '';
+        emailInput.blur();
       } else {
         showToast('Vui lòng nhập địa chỉ email hợp lệ!', 'warning');
       }
