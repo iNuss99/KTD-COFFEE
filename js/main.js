@@ -538,13 +538,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (modalCodAmount) modalCodAmount.textContent = formatMoney(finalTotal);
 
     if (modalQrImg) {
-      modalQrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=KTDCOFFEE_ORDER_${Math.round(finalTotal)}`;
+      modalQrImg.src = `https://img.vietqr.io/image/MB-0931143830-compact2.png?amount=${Math.round(finalTotal)}&addInfo=KTD%20COFFEE%20ORDER&accountName=DO%20MINH%20KHOA`;
     }
     if (modalMomoQrImg) {
-      modalMomoQrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=2|99|0901234567|DO%20MINH%20KHOA|ktdcoffee@gmail.com|0|0|${Math.round(finalTotal)}|KTD_COFFEE`;
+      modalMomoQrImg.src = `https://img.vietqr.io/image/MB-0931143830-compact2.png?amount=${Math.round(finalTotal)}&addInfo=KTD%20COFFEE%20MOMO&accountName=DO%20MINH%20KHOA`;
     }
     if (modalZaloPayQrImg) {
-      modalZaloPayQrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://zalopay.vn/pay?amount=${Math.round(finalTotal)}%26note=KTD_COFFEE`;
+      modalZaloPayQrImg.src = `https://img.vietqr.io/image/MB-0931143830-compact2.png?amount=${Math.round(finalTotal)}&addInfo=KTD%20COFFEE%20ZALOPAY&accountName=DO%20MINH%20KHOA`;
     }
   }
 
@@ -1112,13 +1112,13 @@ document.addEventListener('DOMContentLoaded', async () => {
       const pageZaloPayQrImg = document.getElementById('page-zalopay-qr-img');
 
       if (pageQrImg) {
-        pageQrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=KTDCOFFEE_ORDER_${Math.round(finalTotal)}`;
+        pageQrImg.src = `https://img.vietqr.io/image/MB-0931143830-compact2.png?amount=${Math.round(finalTotal)}&addInfo=KTD%20COFFEE%20ORDER&accountName=DO%20MINH%20KHOA`;
       }
       if (pageMomoQrImg) {
-        pageMomoQrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=2|99|0901234567|DO%20MINH%20KHOA|ktdcoffee@gmail.com|0|0|${Math.round(finalTotal)}|KTD_COFFEE`;
+        pageMomoQrImg.src = `https://img.vietqr.io/image/MB-0931143830-compact2.png?amount=${Math.round(finalTotal)}&addInfo=KTD%20COFFEE%20MOMO&accountName=DO%20MINH%20KHOA`;
       }
       if (pageZaloPayQrImg) {
-        pageZaloPayQrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://zalopay.vn/pay?amount=${Math.round(finalTotal)}%26note=KTD_COFFEE`;
+        pageZaloPayQrImg.src = `https://img.vietqr.io/image/MB-0931143830-compact2.png?amount=${Math.round(finalTotal)}&addInfo=KTD%20COFFEE%20ZALOPAY&accountName=DO%20MINH%20KHOA`;
       }
     }
 
