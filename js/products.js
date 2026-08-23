@@ -39,7 +39,7 @@ const PRODUCTS = [
     ratingVal: 4.9,
     desc: 'Cà phê phin truyền thống hòa quyện cùng lớp kem muối mặn mà, béo mịn độc quyền chuẩn vị cung đình.',
     image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600&auto=format&fit=crop&q=80',
-    badge: 'Đặc Sản',
+    badge: 'Đặc Biệt',
     badgeType: 'gold',
     inStock: true,
     toppings: [
