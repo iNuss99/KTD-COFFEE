@@ -45,12 +45,14 @@
   0% {
     transform: scale(1);
   }
+
   100% {
     transform: scale(1.08);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .hero-bg-img,
   .hero-video-bg {
     animation: none;
@@ -621,14 +623,15 @@
 .how-step {
   background: #FFFFFF;
   border-radius: var(--radius-xl);
-  padding: 32px 24px 28px;
+  padding: 36px 24px;
   border: 1px solid rgba(0, 0, 0, 0.06);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
   position: relative;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  text-align: center;
 }
 
 .how-step:hover {
@@ -930,7 +933,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 0 8px;
+  padding: 36px 24px;
 }
 
 .step-icon-wrap {
@@ -1259,10 +1262,21 @@
 /* --------------------------------------------------------------------------
    30. CÁC CLASS BEM THAY THẾ INLINE STYLE TRONG INDEX.HTML
    -------------------------------------------------------------------------- */
-.skeleton-line--w70 { width: 70%; }
-.skeleton-line--w80 { width: 80%; }
-.skeleton-line--w60 { width: 60%; }
-.skeleton-line--w75 { width: 75%; }
+.skeleton-line--w70 {
+  width: 70%;
+}
+
+.skeleton-line--w80 {
+  width: 80%;
+}
+
+.skeleton-line--w60 {
+  width: 60%;
+}
+
+.skeleton-line--w75 {
+  width: 75%;
+}
 
 .home-menu-cta {
   text-align: center;
@@ -1301,4 +1315,4 @@
   color: white;
   border-radius: var(--radius-full);
   padding: 14px 28px;
-}
+}
