@@ -1,0 +1,84 @@
+<!-- ========================================================================
+     FOOTER-PARTIAL.HTML — Thành phần Chân Trang Mẫu (Footer Component)
+     Bao gồm:
+     1. Cột 1: Thông tin thương hiệu, mô tả & Huy hiệu thanh toán hỗ trợ
+     2. Cột 2: Danh mục liên kết điều hướng nhanh (Khám phá)
+     3. Cột 3: Danh sách chính sách & hỗ trợ khách hàng
+     4. Cột 4: Tổng đài hỗ trợ & danh sách địa chỉ chi nhánh
+     5. Thanh chân trang (Bottom Bar) bản quyền & mạng xã hội
+     ======================================================================== -->
+<footer class="site-footer" id="about" aria-label="Chân trang">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Cột 1: Thông tin Thương hiệu & Huy hiệu Thanh toán -->
+      <div class="footer-col footer-brand">
+        <a href="index.html" class="brand-logo footer-logo" aria-label="KTD-COFFEE Trang chủ">
+          <img src="assets/images/logo_cafe.svg" alt="KTD-COFFEE Logo" class="brand-logo-img" />
+          <span class="logo-text">KTD<span class="logo-text-accent">-COFFEE</span></span>
+        </a>
+        <p class="footer-desc">
+          KTD-COFFEE là thương hiệu cà phê mộc & trà thủ công tiên phong với 100% hạt Arabica & Robusta Cầu Đất nguyên chất, chiết xuất tươi mới và dịch vụ giao hàng hỏa tốc trong 15 phút.
+        </p>
+        <div class="payment-badges-row" aria-label="Phương thức thanh toán hỗ trợ">
+          <span class="payment-badge-pill"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg> VietQR</span>
+          <span class="payment-badge-pill"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/></svg> MoMo</span>
+          <span class="payment-badge-pill"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> ZaloPay</span>
+          <span class="payment-badge-pill"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg> Visa / Master</span>
+          <span class="payment-badge-pill"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg> COD</span>
+        </div>
+      </div>
+
+      <!-- Cột 2: Điều hướng trang -->
+      <div class="footer-col">
+        <h4>Khám Phá</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Trang Chủ</a></li>
+          <li><a href="menu.html">Thực Đơn Đầy Đủ</a></li>
+          <li><a href="about.html">Về KTD-COFFEE</a></li>
+          <li><a href="contact.html">Liên Hệ & Chi Nhánh</a></li>
+          <li><a href="menu.html">Combo Cà Phê & Bánh 20%</a></li>
+        </ul>
+      </div>
+
+      <!-- Cột 3: Điều khoản & Chính sách -->
+      <div class="footer-col">
+        <h4>Chính Sách & Hỗ Trợ</h4>
+        <ul class="footer-links">
+          <li><a href="about.html">Chứng nhận Nguồn gốc Hạt Cầu Đất</a></li>
+          <li><a href="contact.html">Chính sách giao hàng ly giữ nhiệt 15p</a></li>
+          <li><a href="contact.html">Chính sách đổi trả & hoàn tiền</a></li>
+          <li><a href="contact.html">Bảo mật thông tin khách hàng</a></li>
+          <li><a href="contact.html">Câu hỏi thường gặp (FAQ)</a></li>
+        </ul>
+      </div>
+
+      <!-- Cột 4: Tổng đài & Hệ thống chi nhánh -->
+      <div class="footer-col" id="contact">
+        <h4>Tổng Đài & Chi Nhánh</h4>
+        <address class="footer-address">
+          <ul class="footer-links">
+            <li class="footer-contact-hotline">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E58E26" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="footer-hotline-icon"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Hotline: <span class="footer-hotline-num">1900-6868</span>
+            </li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="footer-info-icon"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Phục vụ: 07:00 - 22:30 hàng ngày</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="footer-info-icon"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Chi nhánh 1: 123 Nguyễn Huệ, Quận 1, TP.HCM</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="footer-info-icon"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Chi nhánh 2: 88 Cầu Giấy, Dịch Vọng, Hà Nội</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="footer-info-icon"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Chi nhánh 3: 45 Bạch Đằng, Hải Châu, Đà Nẵng</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="footer-info-icon"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Email: lienhe@ktdcoffee.vn</li>
+          </ul>
+        </address>
+      </div>
+    </div>
+
+    <!-- Thanh Bản Quyền Dưới Cùng & Mạng Xã Hội -->
+    <div class="footer-bottom">
+      <div>© 2026 KTD-COFFEE. Tất cả các quyền được bảo lưu. Thiết kế chuẩn WCAG AA.</div>
+      <div class="footer-social-links">
+        <a href="#" class="footer-social-link">Facebook</a>
+        <a href="#" class="footer-social-link">Instagram</a>
+        <a href="#" class="footer-social-link">TikTok</a>
+        <a href="#" class="footer-social-link">YouTube</a>
+      </div>
+    </div>
+  </div>
+</footer>

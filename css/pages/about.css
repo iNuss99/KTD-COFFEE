@@ -1,0 +1,197 @@
+/* ==========================================================================
+   ABOUT.CSS — Trang giới thiệu (about.html)
+   Bao gồm: section câu chuyện thương hiệu (story), giá trị cốt lõi (values),
+            đội ngũ Barista, timeline lịch sử, cam kết chất lượng nguyên liệu.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   26. STYLE TRANG GIỚI THIỆU (ABOUT US)
+   -------------------------------------------------------------------------- */
+.about-story-section {
+  padding: var(--space-8) 0;
+}
+
+.about-story-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  .about-story-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+  }
+}
+
+.about-story-image-wrap {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.about-story-image {
+  width: 100%;
+  height: 100%;
+  max-height: 460px;
+  object-fit: cover;
+  display: block;
+}
+
+.about-story-badge {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  padding: 16px 20px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.about-story-badge .badge-num {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+.about-story-badge .badge-txt {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.3;
+}
+
+.about-stats-bar {
+  background: var(--color-primary);
+  color: #ffffff;
+  padding: var(--space-8) 0;
+  margin: var(--space-8) 0;
+}
+
+.about-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .about-stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.stat-item h3 {
+  font-size: clamp(2.25rem, 3vw + 1rem, 3.5rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  margin-bottom: 4px;
+  color: #ffffff;
+}
+
+.stat-item p {
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+}
+
+.chefs-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  margin-top: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .chefs-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.chef-card {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-xs);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  text-align: center;
+}
+
+.chef-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.chef-photo {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.chef-info {
+  padding: 20px;
+}
+
+.chef-info h4 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.chef-info .chef-role {
+  color: var(--color-primary);
+  font-size: var(--font-size-small);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.chef-info p {
+  font-size: var(--font-size-caption);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   27. CÁC CLASS BEM THAY THẾ INLINE STYLE TRONG ABOUT.HTML
+   -------------------------------------------------------------------------- */
+.about-text-p1 {
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.about-text-p2 {
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.about-cta-group {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.why-us-section--no-top-padding {
+  padding-top: 0;
+}
+
+.about-promo-btn {
+  background: #1A1A1A;
+  color: white;
+  border-radius: var(--radius-full);
+  padding: 14px 36px;
+  font-size: 1.0625rem;
+}
+
+

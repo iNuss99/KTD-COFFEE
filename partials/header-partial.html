@@ -1,0 +1,173 @@
+<!-- ========================================================================
+     HEADER-PARTIAL.HTML — Thành phần Đầu Trang Mẫu (Header Component)
+     Bao gồm:
+     1. Thanh điều hướng Desktop (Logo, Menu chính, Ô tìm kiếm tức thì)
+     2. Nút tài khoản & Nút giỏ hàng với Badge số lượng động
+     3. Khung tìm kiếm di động (Mobile Search Overlay)
+     4. Menu trượt di động bên trái (Mobile Nav Drawer)
+     ======================================================================== -->
+<header class="site-header" id="site-header">
+  <div class="container header-inner">
+    <!-- 1. Logo Thương Hiệu KTD-COFFEE -->
+    <a href="index.html" class="brand-logo" aria-label="KTD-COFFEE Trang chủ">
+      <img src="assets/images/logo_cafe.svg" alt="KTD-COFFEE Logo" class="brand-logo-img" />
+      <span class="logo-text">KTD-COFFEE</span>
+    </a>
+
+    <!-- 2. Menu Điều Hướng Desktop -->
+    <nav class="header-nav" aria-label="Menu chính">
+      <a href="index.html" class="nav-link">Trang Chủ</a>
+      <a href="menu.html" class="nav-link">Thực Đơn</a>
+      <a href="about.html" class="nav-link">Về Chúng Tôi</a>
+      <a href="contact.html" class="nav-link">Liên Hệ</a>
+    </nav>
+
+    <!-- 3. Khu Vực Thao Tác: Tìm Kiếm, Đăng Nhập & Giỏ Hàng -->
+    <div class="header-actions">
+      <!-- Form Tìm Kiếm Tức Thì Desktop (Gợi ý món ăn/thức uống theo thời gian thực) -->
+      <form class="header-search" role="search" action="#" onsubmit="event.preventDefault();">
+        <span class="search-icon-inside" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </span>
+        <input type="search" id="search-input-desktop" class="search-input"
+          placeholder="Tìm bạc xỉu, cold brew, trà đào..." aria-label="Tìm kiếm đồ uống" autocomplete="off" />
+        <!-- Dropdown kết quả tìm kiếm desktop -->
+        <div class="search-results-dropdown" id="search-results-desktop" aria-live="polite"></div>
+      </form>
+
+      <!-- Nút Mở Thanh Tìm Kiếm Giao Diện Di Động -->
+      <button type="button" class="icon-btn mobile-search-toggle" id="mobile-search-toggle" aria-label="Mở tìm kiếm">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </button>
+
+      <!-- Nút Nút Mở Menu Hamburger Di Động -->
+      <button type="button" class="icon-btn mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Mở menu di động">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <!-- Khu Vực Tài Khoản / Đăng Nhập (Render Động Qua auth.js) -->
+      <div id="header-user-area" class="header-user-area">
+        <button type="button" class="auth-header-btn open-auth-btn" id="open-auth-btn" aria-label="Đăng nhập hoặc đăng ký tài khoản">
+          <span class="cart-icon-wrap" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </span>
+          <span class="cart-btn-label">Tài Khoản</span>
+        </button>
+      </div>
+
+      <!-- Nút Giỏ Hàng Với Badge Số Lượng Động (Render Động Qua cart.js) -->
+      <button type="button" class="cart-header-btn open-cart-btn" aria-label="Mở giỏ hàng của bạn" title="Mở giỏ hàng">
+        <span class="cart-icon-wrap" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span class="cart-badge" id="cart-count-badge">0</span>
+        </span>
+        <span class="cart-btn-label">Giỏ Hàng</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Khung Tìm Kiếm Phủ Đẩy Xuống Trên Màn Hình Di Động -->
+  <div class="mobile-search-bar" id="mobile-search-bar">
+    <form class="container search-form-relative" role="search" action="#" onsubmit="event.preventDefault();">
+      <span class="search-icon-inside" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </span>
+      <input type="search" id="search-input-mobile" class="search-input"
+        placeholder="Tìm thức uống bạn yêu thích..." aria-label="Tìm kiếm đồ uống di động" autocomplete="off" />
+      <!-- Dropdown kết quả tìm kiếm mobile -->
+      <div class="search-results-dropdown" id="search-results-mobile" aria-live="polite"></div>
+    </form>
+  </div>
+</header>
+
+<!-- ========================================================================
+     MENU DẠNG BẢNG TRƯỢT DI ĐỘNG BÊN TRÁI (Mobile Navigation Left Drawer)
+     ======================================================================== -->
+<div class="mobile-nav-backdrop" id="mobile-nav-backdrop" aria-hidden="true"></div>
+<aside class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Menu di động">
+  <!-- Đầu Menu Di Động: Logo & Nút Đóng -->
+  <div class="mobile-nav-header">
+    <a href="index.html" class="brand-logo" aria-label="KTD-COFFEE Trang chủ">
+      <img src="assets/images/logo_cafe.svg" alt="KTD-COFFEE Logo" class="brand-logo-img" />
+      <span class="logo-text">KTD-COFFEE</span>
+    </a>
+    <button type="button" class="close-btn" id="close-mobile-nav-btn" aria-label="Đóng menu di động">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+  
+  <!-- Thân Menu Di Động: Ô Tìm Kiếm, Liên Kết Trang & Tài Khoản -->
+  <div class="mobile-nav-body">
+    <!-- Tìm Kiếm Nhanh Trong Drawer Di Động -->
+    <div class="mobile-drawer-search">
+      <form class="search-form-relative" role="search" action="#" onsubmit="event.preventDefault();">
+        <span class="search-icon-inside" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </span>
+        <input type="search" id="search-input-drawer" class="search-input" placeholder="Tìm thức uống..." aria-label="Tìm kiếm đồ uống" autocomplete="off" />
+        <div class="search-results-dropdown" id="search-results-drawer" aria-live="polite"></div>
+      </form>
+    </div>
+
+    <!-- Danh Sách Liên Kết Điều Hướng Di Động -->
+    <nav class="mobile-drawer-nav" aria-label="Menu chính di động">
+      <a href="index.html" class="mobile-nav-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        <span>Trang Chủ</span>
+      </a>
+      <a href="menu.html" class="mobile-nav-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+        <span>Thực Đơn</span>
+      </a>
+      <a href="about.html" class="mobile-nav-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+        <span>Về Chúng Tôi</span>
+      </a>
+      <a href="contact.html" class="mobile-nav-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        <span>Liên Hệ</span>
+      </a>
+    </nav>
+
+    <!-- Khu Vực Tài Khoản Trong Drawer Di Động (Render Động Qua auth.js) -->
+    <div class="mobile-drawer-account" id="mobile-drawer-account"></div>
+  </div>
+
+  <!-- Chân Menu Di Động: Thông Tin Hotline Tắt Nhanh -->
+  <div class="mobile-nav-footer">
+    <div class="drawer-contact-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+      <span>Hotline: 1900 6868</span>
+    </div>
+  </div>
+</aside>

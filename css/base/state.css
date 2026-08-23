@@ -1,0 +1,38 @@
+/* ==========================================================================
+   KTD-COFFEE - CÁC CLASS TRẠNG THÁI ĐỘNG (DYNAMIC STATE CLASSES)
+   ========================================================================== */
+
+/* 1. Trạng định Ẩn / Hiện (Visibility & Display States) */
+.is-hidden {
+  display: none !important;
+}
+
+.is-active {
+  display: block;
+}
+
+.is-flex-active {
+  display: flex !important;
+}
+
+.is-grid-active {
+  display: grid !important;
+}
+
+/* 2. Trạng thái Vô hiệu hóa (Disabled State) */
+.is-disabled {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+}
+
+/* 3. Trạng thái Đang tải (Loading State) */
+.is-loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* 4. Khóa cuộn trang khi mở Modal/Drawer (Body Lock State) */
+body.has-modal-open {
+  overflow: hidden !important;
+}

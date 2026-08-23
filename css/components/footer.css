@@ -1,0 +1,185 @@
+/* ==========================================================================
+   FOOTER.CSS — Chân trang website (Site Footer)
+   Bao gồm: lưới 4 cột thông tin (brand, điều hướng, chính sách, liên hệ),
+            badge phương thức thanh toán, thanh bottom bar bản quyền & mạng xã hội.
+   Nền footer: #111111 (tối hoàn toàn) để tạo contrast với phần body kem nâu.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   12. CHÂN TRANG (SITE FOOTER)
+   -------------------------------------------------------------------------- */
+.site-footer {
+  background: #111111;
+  color: #E5E5E5;
+  padding-top: var(--space-10);
+  padding-bottom: var(--space-6);
+  border-top: 1px solid #222222;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+@media (min-width: 640px) {
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  }
+}
+
+.footer-brand .brand-logo {
+  color: white;
+  margin-bottom: var(--space-2);
+}
+
+.footer-brand .logo-text {
+  color: #FFFFFF !important;
+}
+
+.footer-desc {
+  font-size: var(--font-size-small);
+  color: #D1D5DB;
+  line-height: 1.6;
+  margin-bottom: var(--space-3);
+}
+
+.footer-col {
+  color: #E5E7EB;
+}
+
+.footer-col h4 {
+  color: #FFFFFF;
+  font-size: var(--font-size-h3);
+  margin-bottom: var(--space-3);
+  position: relative;
+  font-weight: 700;
+}
+
+.footer-col p,
+.footer-col span,
+.footer-col li {
+  color: #E5E7EB;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.footer-links a {
+  color: #D1D5DB;
+  font-size: var(--font-size-small);
+  transition: color var(--transition-fast);
+}
+
+.footer-links a:hover {
+  color: var(--color-primary);
+}
+
+.payment-badges-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin-top: var(--space-2);
+}
+
+.payment-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: #222222;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-caption);
+  color: #E5E7EB;
+  font-weight: 600;
+}
+
+.footer-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding-top: var(--space-4);
+  border-top: 1px solid #222222;
+  font-size: var(--font-size-caption);
+  color: #9CA3AF;
+}
+
+@media (min-width: 768px) {
+  .footer-bottom {
+    flex-direction: row;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   22. FOOTER SECTION TAG (for data-animate)
+   -------------------------------------------------------------------------- */
+footer[data-animate] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 800ms ease 200ms, transform 800ms ease 200ms;
+}
+
+footer[data-animate].visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   BEM CLASSES THAY THẾ INLINE STYLE TRONG FOOTER
+   -------------------------------------------------------------------------- */
+.logo-text-accent {
+  color: #E58E26;
+}
+
+.footer-address {
+  font-style: normal;
+}
+
+.footer-contact-hotline {
+  color: white;
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+.footer-hotline-icon {
+  vertical-align: text-bottom;
+  margin-right: 6px;
+}
+
+.footer-hotline-num {
+  color: #E58E26;
+}
+
+.footer-info-icon {
+  vertical-align: text-bottom;
+  margin-right: 6px;
+}
+
+.footer-social-links {
+  display: flex;
+  gap: 16px;
+}
+
+.footer-social-link {
+  color: #888888;
+  transition: color var(--transition-fast);
+}
+
+.footer-social-link:hover {
+  color: #ffffff;
+}
+
+

@@ -1,0 +1,200 @@
+/* ==========================================================================
+   KTD-COFFEE - TRANG THANH TOÁN (CHECKOUT PAGE STYLES)
+   ========================================================================== */
+
+/* 1. Trạng Thái Đơn Hàng Trống Trong Trang Checkout (Empty Cart Page State) */
+.checkout-empty-state__btn {
+  margin-top: 16px;
+}
+
+/* 2. Banner Yêu Cầu Đăng Nhập / Trạng Thái Đã Đăng Nhập (Auth Banners) */
+.checkout-auth-banner__title {
+  color: #8D5400;
+  font-size: 0.9375rem;
+}
+
+.checkout-auth-banner__text {
+  font-size: 0.8125rem;
+  color: #8D5400;
+  margin: 2px 0 0 0;
+}
+
+.checkout-auth-logged-banner__info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+}
+
+/* 3. Các Tiêu Đề Bước Thanh Toán & Gợi Ý Địa Chỉ (Step Titles & Address Chips) */
+.checkout-step-title {
+  margin-bottom: 16px;
+}
+
+.checkout-address-suggestions {
+  margin-bottom: 16px;
+}
+
+.checkout-address-suggestions__label {
+  font-size: var(--font-size-caption);
+  color: var(--color-text-secondary);
+  margin-right: 8px;
+}
+
+.sample-address-chip-page {
+  padding: 4px 10px;
+  font-size: 0.75rem;
+}
+
+.checkout-step-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
+.checkout-step-actions--between {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
+/* 4. Phương Thức Thanh Toán (Payment Methods Grid & Badges) */
+.payment-option-info__title {
+  font-weight: 700;
+  font-size: var(--font-size-small);
+}
+
+.payment-option-info__desc {
+  font-size: var(--font-size-caption);
+  color: var(--color-text-secondary);
+}
+
+.payment-showcase-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.payment-showcase-title {
+  font-size: var(--font-size-small);
+  margin: 0;
+}
+
+.payment-showcase-note {
+  font-size: var(--font-size-caption);
+  color: var(--color-text-secondary);
+  margin-bottom: 8px;
+}
+
+/* Badges cho từng ngân hàng / ví điện tử */
+.badge-vietqr {
+  background: #005BAA;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+
+.badge-momo {
+  background: #A50064;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+
+.badge-zalopay {
+  background: #0068FF;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+
+.badge-cod {
+  background: #10B981;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.75rem;
+}
+
+/* 5. Giao Diện COD (Cash On Delivery Box) */
+.cod-icon-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #E8F7F0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 12px 0;
+}
+
+.cod-instruction-text {
+  font-size: var(--font-size-small);
+  color: var(--color-text-primary);
+  max-width: 360px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.cod-amount-highlight {
+  font-size: 1.15rem;
+  color: var(--color-primary);
+}
+
+.cod-warning-box {
+  background: #FFF8E7;
+  border: 1px dashed #F5D38A;
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  max-width: 360px;
+  font-size: var(--font-size-caption);
+  color: #8D5400;
+  margin-top: 10px;
+}
+
+/* 6. Khối Tóm Tắt & Voucher (Voucher Box & Summary List) */
+.checkout-summary-card {
+  background: #FAFAFA;
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid var(--color-border);
+}
+
+.voucher-input-wrapper {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.voucher-input-wrapper .form-control {
+  flex: 1;
+}
+
+.voucher-suggestions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.voucher-chip-btn {
+  font-size: 0.75rem;
+  padding: 3px 8px;
+}
+
+.voucher-chip-code {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.discount-text-success {
+  color: var(--color-success);
+}

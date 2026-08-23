@@ -1,0 +1,150 @@
+/* ==========================================================================
+   TOAST.CSS — Thông báo thả xuống (Toast Notification System)
+   Bao gồm: container cố định góc trên phải, các loại toast (success/warning/
+            error/info), animation trượt vào/ra, nút đóng thủ công.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   11. HỆ THỐNG TOAST THÔNG BÁO (GLASSMORPHISM - GÓC TRÊN PHẢI)
+   -------------------------------------------------------------------------- */
+.toast-container {
+  position: fixed;
+  z-index: 9999;
+  top: 90px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none;
+  max-width: 400px;
+  width: calc(100% - 32px);
+}
+
+@media (max-width: 640px) {
+  .toast-container {
+    top: 80px;
+    right: 16px;
+    left: 16px;
+    width: auto;
+    max-width: none;
+  }
+}
+
+.toast {
+  pointer-events: auto;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: var(--color-text-primary);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
+  font-size: var(--font-size-small);
+  font-weight: 600;
+  line-height: 1.4;
+  animation: toastSlideDown 280ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+}
+
+.toast:hover {
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16);
+  transform: translateY(-1px);
+}
+
+@keyframes toastSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-16px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.toast-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.toast-icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+}
+
+.toast-text {
+  flex: 1;
+  color: #1F2937;
+  font-size: 0.9rem;
+}
+
+.toast.toast-success {
+  border-left: 4px solid #10B981;
+}
+
+.toast.toast-success .toast-icon-wrap {
+  background: #ECFDF5;
+  color: #10B981;
+}
+
+.toast.toast-warning {
+  border-left: 4px solid #F59E0B;
+}
+
+.toast.toast-warning .toast-icon-wrap {
+  background: #FFFBEB;
+  color: #D97706;
+}
+
+.toast.toast-error {
+  border-left: 4px solid #E5292F;
+}
+
+.toast.toast-error .toast-icon-wrap {
+  background: #FEF2F2;
+  color: #E5292F;
+}
+
+.toast.toast-info {
+  border-left: 4px solid #3B82F6;
+}
+
+.toast.toast-info .toast-icon-wrap {
+  background: #EFF6FF;
+  color: #3B82F6;
+}
+
+.toast-close-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: var(--radius-full);
+  background: transparent;
+  border: none;
+  color: #9CA3AF;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+}
+
+.toast-close-btn:hover {
+  background: #F3F4F6;
+  color: #1F2937;
+}

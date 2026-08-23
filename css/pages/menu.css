@@ -1,0 +1,339 @@
+/* ==========================================================================
+   MENU.CSS — Trang thực đơn (menu.html)
+   Bao gồm: thanh chọn danh mục scroll ngang (.category-pills), bộ lọc sort,
+            ô hiển thị số lượng kết quả, header trang thực đơn hero nhỏ.
+   Lưới sản phẩm (.product-grid) dùng chung từ card.css.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   6. BỘ CHỌN DANH MỤC (CATEGORY PILLS - CUỘN NGANG)
+   -------------------------------------------------------------------------- */
+.category-section {
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-4);
+}
+
+.section-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin-bottom: var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .section-header {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.section-subtitle {
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: var(--font-size-small);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.category-pills-wrapper {
+  position: relative;
+  margin-top: var(--space-3);
+}
+
+.category-pills-list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: var(--space-1);
+  scrollbar-width: none;
+}
+
+.category-pills-list::-webkit-scrollbar {
+  display: none;
+}
+
+.category-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: white;
+  border: 1px solid var(--color-border-input);
+  border-radius: var(--radius-full);
+  color: var(--color-text-secondary);
+  font-weight: 600;
+  font-size: var(--font-size-small);
+  white-space: nowrap;
+  scroll-snap-align: start;
+  transition: all var(--transition-fast);
+}
+
+.category-pill:hover {
+  border-color: rgba(200, 106, 43, 0.35);
+  color: var(--color-primary);
+  background: var(--color-primary-light);
+}
+
+.category-pill.active {
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 12px var(--color-primary-glow);
+}
+
+.category-pill .pill-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+}
+
+.category-pill .pill-icon [data-lucide],
+.category-pill .pill-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+  transition: stroke var(--transition-fast);
+}
+
+
+/* --------------------------------------------------------------------------
+   23. BREADCRUMBS & PAGE HERO (Shared across Sub-pages)
+   -------------------------------------------------------------------------- */
+.breadcrumb-nav {
+  padding: 8px 0 24px 0;
+  background: transparent;
+  font-size: var(--font-size-small);
+  display: flex;
+  justify-content: center;
+}
+
+.breadcrumb-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap;
+}
+
+.breadcrumb-item a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+  font-weight: 500;
+}
+
+.breadcrumb-item a:hover {
+  color: #E58E26;
+}
+
+.breadcrumb-separator {
+  color: rgba(255, 255, 255, 0.5);
+  user-select: none;
+}
+
+.breadcrumb-item.active {
+  color: #E58E26;
+  font-weight: 700;
+}
+
+.page-hero {
+  background: linear-gradient(135deg, #1C110C 0%, #3B2217 50%, #24140D 100%);
+  color: #ffffff;
+  padding: var(--space-8) 0;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: var(--space-6);
+  border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+}
+
+.page-hero::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(200, 106, 43, 0.3) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.page-hero-inner {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.page-hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(200, 106, 43, 0.2);
+  border: 1px solid rgba(200, 106, 43, 0.4);
+  color: #E58E26;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-2);
+}
+
+.page-hero-title {
+  font-size: clamp(2rem, 4vw + 1rem, 3.25rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: var(--space-2);
+  color: #ffffff;
+}
+
+.page-hero-desc {
+  font-size: 1.0625rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+}
+
+
+/* --------------------------------------------------------------------------
+   24. MENU PAGE TOOLBAR & ADVANCED CONTROLS
+   -------------------------------------------------------------------------- */
+.menu-toolbar {
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+  margin-bottom: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: var(--shadow-xs);
+}
+
+@media (min-width: 768px) {
+  .menu-toolbar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.menu-toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.menu-search-box {
+  position: relative;
+  flex: 1;
+  max-width: 400px;
+}
+
+.menu-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.sort-select-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sort-select-label {
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.sort-select {
+  padding: 8px 32px 8px 12px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--color-border-input);
+  background: #ffffff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236B6B6B' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") no-repeat right 12px center;
+  appearance: none;
+  font-family: inherit;
+  font-size: var(--font-size-small);
+  color: var(--color-text-primary);
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.sort-select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-glow);
+}
+
+.product-count-badge {
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+  font-weight: 600;
+}
+
+@media (max-width: 639px) {
+  .page-hero {
+    padding: var(--space-6) 0;
+    margin-bottom: var(--space-4);
+  }
+
+  .menu-toolbar {
+    padding: 12px 14px;
+    gap: 12px;
+  }
+
+  .menu-toolbar-left,
+  .menu-toolbar-right {
+    width: 100%;
+  }
+
+  .menu-search-box {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .sort-select-wrapper {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .sort-select {
+    flex: 1;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   25. CÁC CLASS BEM THAY THẾ INLINE STYLE TRONG MENU.HTML
+   -------------------------------------------------------------------------- */
+.product-grid-section--no-top-padding {
+  padding-top: 0;
+}
+
+.category-pills-wrapper--mb {
+  margin-bottom: var(--space-4);
+}
+
+.menu-contact-btn {
+  background: #1A1A1A;
+  color: white;
+  border-radius: var(--radius-full);
+  padding: 14px 32px;
+}
+

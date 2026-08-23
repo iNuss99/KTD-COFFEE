@@ -1,0 +1,1444 @@
+<!-- ============================================================
+     TRANG CHỦ — index.html (KTD-COFFEE Prototype)
+     Mô tả : Trang chủ đầy đủ tính năng: Hero video, Flash Sale
+             đếm ngược, lưới sản phẩm nổi bật, thống kê thương
+             hiệu, Testimonials carousel, CTA đăng ký ưu đãi.
+     Phụ thuộc JS : main.js (controller chính), cart.js,
+                    auth.js, ui.js, products.js
+     Phụ thuộc CSS: css/style.css (tổng hợp tất cả module)
+============================================================ -->
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="KTD-COFFEE - Chuỗi cà phê rang mộc và trà thủ công chuẩn gu Việt, giao hỏa tốc 15 phút bảo toàn độ tươi mới. Thưởng thức Bạc xỉu sữa dừa, Cà phê muối xứ Huế, Caramel Macchiato, Cold Brew và bánh tươi nướng nóng." />
+  <title>KTD-COFFEE | Đậm Vị Cà Phê Mộc - Khởi Nguồn Cảm Hứng | Coffee & Bakery</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans & Be Vietnam Pro (Full Vietnamese Diacritics Support: ăâêôơưđ) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <!-- ========================================================================
+       1. THANH ĐIỀU HƯỚNG HEADER — Dính kính mờ (Sticky Glassmorphic)
+          Bao gồm: Logo, Nav desktop, Tìm kiếm instant, Tài khoản, Giỏ hàng,
+          Nút hamburger mobile, Search bar overlay mobile.
+       ======================================================================== -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <!-- Brand Logo -->
+      <a href="index.html" class="brand-logo" aria-label="KTD-COFFEE Trang chủ">
+        <img src="assets/images/logo_cafe.svg" alt="KTD-COFFEE Logo" class="brand-logo-img" />
+        <span class="logo-text">KTD-COFFEE</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="header-nav" aria-label="Menu chính">
+        <a href="index.html" class="nav-link active">Trang Chủ</a>
+        <a href="menu.html" class="nav-link">Thực Đơn</a>
+        <a href="about.html" class="nav-link">Về Chúng Tôi</a>
+        <a href="contact.html" class="nav-link">Liên Hệ</a>
+      </nav>
+
+      <!-- Header Search & Actions -->
+      <div class="header-actions">
+        <!-- Desktop Instant Search -->
+        <div class="header-search">
+          <span class="search-icon-inside" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </span>
+          <input type="search" id="search-input-desktop" class="search-input" placeholder="Tìm bạc xỉu, cold brew, trà đào..."
+            aria-label="Tìm kiếm đồ uống" autocomplete="off" />
+          <div class="search-results-dropdown" id="search-results-desktop" aria-live="polite"></div>
+        </div>
+
+        <!-- User Auth & Account Dropdown -->
+        <div id="header-user-area" class="header-user-area">
+          <button type="button" class="auth-header-btn open-auth-btn" id="open-auth-btn" aria-label="Đăng nhập hoặc đăng ký tài khoản">
+            <span class="cart-icon-wrap" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </span>
+            <span class="cart-btn-label">Tài Khoản</span>
+          </button>
+        </div>
+
+        <!-- Mobile Search Toggle -->
+        <button type="button" class="icon-btn mobile-search-toggle" id="mobile-search-toggle" aria-label="Mở tìm kiếm">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+
+        <!-- Mobile Menu Toggle  -->
+        <button type="button" class="icon-btn mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Mở menu di động">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Mobile Search Bar Overlay -->
+    <div class="mobile-search-bar" id="mobile-search-bar">
+      <div class="container search-form-relative">
+        <span class="search-icon-inside" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </span>
+        <input type="search" id="search-input-mobile" class="search-input" placeholder="Tìm thức uống bạn yêu thích..."
+          aria-label="Tìm kiếm đồ uống di động" autocomplete="off" />
+        <div class="search-results-dropdown" id="search-results-mobile" aria-live="polite"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Left Drawer -->
+  <div class="mobile-nav-backdrop" id="mobile-nav-backdrop" aria-hidden="true"></div>
+  <aside class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Menu di động">
+    <div class="mobile-nav-header">
+      <a href="index.html" class="brand-logo" aria-label="KTD-COFFEE Trang chủ">
+        <img src="assets/images/logo_cafe.svg" alt="KTD-COFFEE Logo" class="brand-logo-img" />
+        <span class="logo-text">KTD-COFFEE</span>
+      </a>
+      <button type="button" class="close-btn" id="close-mobile-nav-btn" aria-label="Đóng menu di động">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    
+    <div class="mobile-nav-body">
+      <!-- Quick Search in Mobile Drawer -->
+      <div class="mobile-drawer-search">
+        <form class="search-form-relative" role="search" action="#" onsubmit="event.preventDefault();">
+          <span class="search-icon-inside" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </span>
+          <input type="search" id="search-input-drawer" class="search-input" placeholder="Tìm thức uống..." aria-label="Tìm kiếm đồ uống" autocomplete="off" />
+          <div class="search-results-dropdown" id="search-results-drawer" aria-live="polite"></div>
+        </form>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="mobile-drawer-nav" aria-label="Menu chính di động">
+        <a href="index.html" class="mobile-nav-link active">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          <span>Trang Chủ</span>
+        </a>
+        <a href="menu.html" class="mobile-nav-link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+          <span>Thực Đơn</span>
+        </a>
+        <a href="about.html" class="mobile-nav-link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+          <span>Về Chúng Tôi</span>
+        </a>
+        <a href="contact.html" class="mobile-nav-link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <span>Liên Hệ</span>
+        </a>
+      </nav>
+
+      <!-- User Account Section inside Drawer -->
+      <div class="mobile-drawer-account" id="mobile-drawer-account">
+        <!-- Populated dynamically -->
+      </div>
+    </div>
+
+    <div class="mobile-nav-footer">
+      <div class="drawer-contact-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        <span>Hotline: 1900 6868</span>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <!-- ======================================================================
+         2. HERO SECTION — Giới Thiệu Thương Hiệu Điện Ảnh
+              Video nền tự động phát + lớp overlay mờ, tiêu đề lớn gradient,
+              nút CTA chính, ảnh sản phẩm hero với hiệu ứng 3D tilt.
+         ====================================================================== -->
+    <section class="hero-section" aria-label="Giới thiệu thương hiệu KTD-COFFEE">
+      <!-- Background Video with Overlay -->
+      <div class="hero-bg-wrapper" aria-hidden="true">
+        <video class="hero-bg-video" autoplay loop muted playsinline poster="assets/images/hero-coffee-bg.jpg">
+          <source src="assets/videos/hero-section.mp4" type="video/mp4" />
+        </video>
+        <div class="hero-bg-overlay"></div>
+      </div>
+
+      <div class="container hero-grid">
+        <!-- Left Content Column -->
+        <div class="hero-content">
+          <div class="hero-overline" data-animate>
+            <span>SPECIALTY COFFEE · RANG MỘC THỦ CÔNG · EST. 2024</span>
+          </div>
+
+          <h1 class="hero-title" data-animate data-animate-delay="1">
+            Đậm Vị Cà Phê <br />
+            <span class="hero-gradient-text">Khởi Nguồn</span> <br />
+            <span class="hero-gradient-text">Cảm Hứng!</span>
+          </h1>
+
+          <p class="hero-desc" data-animate data-animate-delay="2">
+            Hạt Arabica & Robusta Cầu Đất nguyên chất rang mộc, chiết xuất tươi mới cùng bọt sữa thanh trùng béo ngậy. Cam kết
+            <strong>giao hỏa tốc 15 phút</strong> — bảo toàn đá và hương thơm nồng nàn khi tới tay bạn!
+          </p>
+
+          <div class="hero-cta-group" data-animate data-animate-delay="3">
+            <a href="menu.html" class="btn btn-hero-primary">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+              </svg>
+              <span>Đặt Thức Uống Ngay</span>
+            </a>
+
+            <a href="menu.html" class="btn btn-hero-secondary">
+              <span>Xem Toàn Bộ Thực Đơn</span>
+              <svg class="btn-arrow-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Social Proof Capsule -->
+          <div class="hero-social-proof" data-animate data-animate-delay="4">
+            <div class="avatar-stack" aria-hidden="true">
+              <img loading="lazy"
+                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80"
+                alt="Khách hàng 1" />
+              <img loading="lazy"
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80"
+                alt="Khách hàng 2" />
+              <img loading="lazy"
+                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80"
+                alt="Khách hàng 3" />
+            </div>
+            <div class="proof-content">
+              <div class="proof-stars-score">
+                <span class="proof-stars" aria-hidden="true">★★★★★</span>
+                <strong class="proof-score">4.9 / 5.0</strong>
+              </div>
+              <div class="proof-count-label">
+                (<span class="proof-number" data-count-up="250">0</span>+ Khách hàng tin dùng mỗi tuần)
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Visual Showcase Column -->
+        <div class="hero-visual-wrapper hero-video-focal-zone" data-animate data-animate-delay="1" aria-hidden="true">
+        </div>
+      </div>
+
+      <!-- TICKER BANNER — scrolling promotion bar inside hero -->
+      <div class="ticker-section" aria-hidden="true">
+        <div class="ticker-track">
+          <span class="ticker-item"><i data-lucide="truck"></i> FREESHIP từ 150.000đ</span><span class="ticker-sep">•</span>
+          <span class="ticker-item"><i data-lucide="zap"></i> Giao hỏa tốc 15 phút</span><span class="ticker-sep">•</span>
+          <span class="ticker-item"><i data-lucide="star"></i> 4.9/5.0 — 120+ đánh giá thực tế</span><span class="ticker-sep">•</span>
+          <span class="ticker-item"><i data-lucide="gift"></i> Dùng mã <strong>KTDCOFFEE20</strong> giảm ngay 20%</span><span class="ticker-sep">•</span>
+          <span class="ticker-item"><i data-lucide="sprout"></i> 100% Cà phê hạt rang mộc</span><span class="ticker-sep">•</span>
+          <span class="ticker-item"><i data-lucide="credit-card"></i> MoMo · ZaloPay · VietQR · COD</span><span class="ticker-sep">•</span>
+          <!-- Duplicate for seamless loop -->
+          <span class="ticker-item"><i data-lucide="truck"></i> FREESHIP từ 150.000đ</span><span class="ticker-sep">•</span>
+          <span class="ticker-item"><i data-lucide="zap"></i> Giao hỏa tốc 15 phút</span><span class="ticker-sep">•</span>
+          <span class="ticker-item"><i data-lucide="star"></i> 4.9/5.0 — 120+ đánh giá thực tế</span><span class="ticker-sep">•</span>
+          <span class="ticker-item"><i data-lucide="gift"></i> Dùng mã <strong>KTDCOFFEE20</strong> giảm ngay 20%</span><span class="ticker-sep">•</span>
+          <span class="ticker-item"><i data-lucide="sprout"></i> 100% Cà phê hạt rang mộc</span><span class="ticker-sep">•</span>
+          <span class="ticker-item"><i data-lucide="credit-card"></i> MoMo · ZaloPay · VietQR · COD</span><span class="ticker-sep">•</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         3. THANH GIÁ TRỊ THƯƠNG HIỆU (VALUE PROPOSITION BAR)
+              4 điểm nổi bật: Giao nhanh 15p, Freeship, 100% Rang mộc, Đa nền thanh toán.
+         ====================================================================== -->
+    <section class="value-props-section" id="promotions" aria-label="Cam kết dịch vụ">
+      <div class="container">
+        <div class="props-grid">
+          <div class="prop-item">
+            <div class="prop-icon" aria-hidden="true"><i data-lucide="zap"></i></div>
+            <div class="prop-info">
+              <h4>Giao Nhanh 15 Phút</h4>
+              <p>Bảo toàn đá & kem béo mịn</p>
+            </div>
+          </div>
+
+          <div class="prop-item">
+            <div class="prop-icon" aria-hidden="true"><i data-lucide="gift"></i></div>
+            <div class="prop-info">
+              <h4>Freeship Từ 150.000đ</h4>
+              <p>Miễn phí giao hàng nội thành</p>
+            </div>
+          </div>
+
+          <div class="prop-item">
+            <div class="prop-icon" aria-hidden="true"><i data-lucide="sprout"></i></div>
+            <div class="prop-info">
+              <h4>100% Rang Mộc</h4>
+              <p>Hạt Arabica & Robusta Cầu Đất</p>
+            </div>
+          </div>
+
+          <div class="prop-item">
+            <div class="prop-icon" aria-hidden="true"><i data-lucide="credit-card"></i></div>
+            <div class="prop-info">
+              <h4>Thanh Toán Đa Dạng</h4>
+              <p>MoMo, ZaloPay, VietQR & COD</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         CÁCH THỨC ĐẶT HÀNG (HOW IT WORKS — 3 BƯỚC)
+              Giải thích quy trình: Chọn món → Đặt hàng/thanh toán → Nhận trong 15 phút.
+         ====================================================================== -->
+    <section class="how-section" id="how-it-works" aria-label="Cách đặt hàng KTD-Coffee">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-subtitle" data-animate>Quy Trình Nhanh Gọn</div>
+            <h2 data-animate data-animate-delay="1">Chỉ 3 Bước — Cà Phê Ngon Tới Bàn Làm Việc</h2>
+          </div>
+        </div>
+        <div class="how-steps-grid" id="how-steps-grid">
+          <div class="how-step" data-animate data-animate-delay="1">
+            <div class="step-icon-wrap">
+              <i data-lucide="coffee" aria-hidden="true"></i>
+              <span class="step-number-badge" aria-hidden="true">1</span>
+            </div>
+            <h3>Chọn Món Yêu Thích</h3>
+            <p>Duyệt thực đơn đa dạng, tùy chỉnh lượng đường, đá, thêm shot espresso hoặc lớp kem cheese theo gu của bạn.</p>
+          </div>
+          <div class="how-step" data-animate data-animate-delay="2">
+            <div class="step-icon-wrap">
+              <i data-lucide="smartphone" aria-hidden="true"></i>
+              <span class="step-number-badge" aria-hidden="true">2</span>
+            </div>
+            <h3>Đặt Hàng & Thanh Toán</h3>
+            <p>Thanh toán siêu tốc qua MoMo, ZaloPay, chuyển khoản VietQR hoặc thanh toán tiền mặt COD khi nhận đồ uống.</p>
+          </div>
+          <div class="how-step" data-animate data-animate-delay="3">
+            <div class="step-icon-wrap">
+              <i data-lucide="bike" aria-hidden="true"></i>
+              <span class="step-number-badge" aria-hidden="true">3</span>
+            </div>
+            <h3>Nhận Hàng Trong 15 Phút</h3>
+            <p>Tài xế giao tận tay với ly sinh thái giữ nhiệt, đảm bảo thức uống luôn tươi mới và giữ trọn hương vị tuyệt hảo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         4. BỘ LỌC DANH MỤC SẢN PHẨM (CATEGORY SELECTOR — Dạng Pills cuộn ngang)
+              Các pill tạo ra tab filter: Tất Cả / Truyền Thống / Espresso / Cold Brew / Trà / Bánh
+         ====================================================================== -->
+    <section class="category-section" id="menu-section" aria-label="Lọc danh mục thức uống">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-subtitle" data-animate>Thực đơn đặc sắc</div>
+            <h2 data-animate data-animate-delay="1">Khám Phá Hương Vị Cà Phê & Trà</h2>
+          </div>
+          <p class="section-desc">
+            Chọn danh mục bên dưới để lọc nhanh thức uống và bánh yêu thích
+          </p>
+        </div>
+
+        <div class="category-pills-wrapper">
+          <div class="category-pills-list" role="tablist" aria-label="Danh mục thực đơn">
+            <button class="category-pill active" data-category="all" role="tab" aria-selected="true">
+              <span class="pill-icon"><i data-lucide="layout-grid"></i></span>
+              <span>Tất Cả Món</span>
+            </button>
+            <button class="category-pill" data-category="traditional" role="tab" aria-selected="false">
+              <span class="pill-icon"><i data-lucide="coffee"></i></span>
+              <span>Cà Phê Truyền Thống</span>
+            </button>
+            <button class="category-pill" data-category="espresso" role="tab" aria-selected="false">
+              <span class="pill-icon"><i data-lucide="cup-soda"></i></span>
+              <span>Espresso & Cà Phê Ý</span>
+            </button>
+            <button class="category-pill" data-category="coldbrew" role="tab" aria-selected="false">
+              <span class="pill-icon"><i data-lucide="snowflake"></i></span>
+              <span>Cold Brew Ủ Lạnh</span>
+            </button>
+            <button class="category-pill" data-category="tea" role="tab" aria-selected="false">
+              <span class="pill-icon"><i data-lucide="leaf"></i></span>
+              <span>Trà & Trái Cây</span>
+            </button>
+            <button class="category-pill" data-category="pastry" role="tab" aria-selected="false">
+              <span class="pill-icon"><i data-lucide="cake"></i></span>
+              <span>Bánh & Bakery</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         5. LƯỚI SẢN PHẨM (PRODUCT GRID — Danh sách nổi bật & Bestsellers)
+              Banner Flash Sale đếm ngược có trong lưới này.
+              #product-grid được render động bởi main.js (đã có skeleton placeholder).
+         ====================================================================== -->
+    <section class="product-grid-section" aria-label="Danh sách thức uống">
+      <div class="container">
+        <!-- Flash Sale Countdown -->
+        <div class="flash-sale-banner" data-animate>
+          <div class="flash-sale-inner">
+            <div class="flash-sale-label">
+              <span class="flash-badge">⚡ Flash Sale</span>
+              <div class="flash-label-text">
+                <div class="flash-label-title">Giảm đến 30% tất cả Combo Cà Phê & Bánh Nóng</div>
+                <div class="flash-label-sub">Kết thúc trong:</div>
+              </div>
+            </div>
+            <div class="countdown-blocks" aria-label="Đồng hồ đếm ngược flash sale">
+              <div class="countdown-unit">
+                <div class="countdown-number" id="cd-hours" aria-live="polite">23</div>
+                <div class="countdown-label">Giờ</div>
+              </div>
+              <span class="countdown-sep" aria-hidden="true">:</span>
+              <div class="countdown-unit">
+                <div class="countdown-number" id="cd-minutes" aria-live="polite">59</div>
+                <div class="countdown-label">Phút</div>
+              </div>
+              <span class="countdown-sep" aria-hidden="true">:</span>
+              <div class="countdown-unit">
+                <div class="countdown-number" id="cd-seconds" aria-live="polite">00</div>
+                <div class="countdown-label">Giây</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Rendered dynamically by script.js -->
+        <div class="product-grid" id="product-grid">
+          <!-- Initial skeleton placeholders while DOM loads -->
+          <div class="skeleton-card">
+            <div class="skeleton-shimmer skeleton-img"></div>
+            <div class="skeleton-shimmer skeleton-line skeleton-line--w70"></div>
+            <div class="skeleton-shimmer skeleton-line short"></div>
+          </div>
+          <div class="skeleton-card">
+            <div class="skeleton-shimmer skeleton-img"></div>
+            <div class="skeleton-shimmer skeleton-line skeleton-line--w80"></div>
+            <div class="skeleton-shimmer skeleton-line short"></div>
+          </div>
+          <div class="skeleton-card">
+            <div class="skeleton-shimmer skeleton-img"></div>
+            <div class="skeleton-shimmer skeleton-line skeleton-line--w60"></div>
+            <div class="skeleton-shimmer skeleton-line short"></div>
+          </div>
+          <div class="skeleton-card">
+            <div class="skeleton-shimmer skeleton-img"></div>
+            <div class="skeleton-shimmer skeleton-line skeleton-line--w75"></div>
+            <div class="skeleton-shimmer skeleton-line short"></div>
+          </div>
+        </div>
+
+        <!-- View Full Menu CTA Button -->
+        <div class="home-menu-cta" data-animate>
+          <a href="menu.html" class="btn btn-primary btn-lg home-menu-cta-btn">
+            <span>Xem Tất Cả Thực Đơn Thức Uống</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         LÝ DO CHỌN CHÚNG TÔI (WHY CHOOSE US)
+              4 thẻ cam kết chất lượng: Rang mộc, Giao hỏa tốc, Barista, Bao bì sinh thái.
+         ====================================================================== -->
+    <section class="why-us-section" aria-label="Vì sao chọn KTD-COFFEE">
+      <div class="container">
+        <div class="section-header section-header--center">
+          <div>
+            <div class="section-subtitle" data-animate>Lý do chọn chúng tôi</div>
+            <h2 data-animate data-animate-delay="1">Cam Kết Chất Lượng Từng Giọt Cà Phê</h2>
+          </div>
+        </div>
+
+        <div class="why-us-grid">
+          <article class="why-card" data-animate data-animate-delay="1">
+            <div class="why-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.4 19 2c1 2 2 4.1 2 9a9 9 0 0 1-10 9Z"/>
+                <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+              </svg>
+            </div>
+            <h3>100% Cà Phê Rang Mộc</h3>
+            <p>Nguồn hạt Arabica Cầu Đất và Robusta Pleiku được tuyển chọn kỹ lưỡng, không hương liệu tổng hợp hay phụ gia.</p>
+          </article>
+
+          <article class="why-card" data-animate data-animate-delay="2">
+            <div class="why-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+              </svg>
+            </div>
+            <h3>Giao Hỏa Tốc 15 Phút</h3>
+            <p>Đóng gói trong ly giữ nhiệt sinh thái chuyên dụng, đảm bảo đá lâu tan và bọt kem luôn bồng bềnh tươi mới.</p>
+          </article>
+
+          <article class="why-card" data-animate data-animate-delay="3">
+            <div class="why-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 8h1a4 4 0 1 1 0 8h-1"/>
+                <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/>
+                <line x1="6" y1="2" x2="6" y2="4"/>
+                <line x1="10" y1="2" x2="10" y2="4"/>
+                <line x1="14" y1="2" x2="14" y2="4"/>
+              </svg>
+            </div>
+            <h3>Barista Chuyên Nghiệp</h3>
+            <p>Quy trình chiết xuất Espresso và pha phin đúng chuẩn nhiệt độ, áp suất để mang lại tách cà phê chuẩn gu nhất.</p>
+          </article>
+
+          <article class="why-card" data-animate data-animate-delay="4">
+            <div class="why-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <h3>Bao Bì Sinh Thái Thân Thiện</h3>
+            <p>Sử dụng ly giấy tráng men hữu cơ, ống hút giấy tự hủy sinh học, bảo vệ tối đa sức khỏe và môi trường.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         ĐÁNH GIÁ KHÁCH HÀNG (TESTIMONIALS CAROUSEL)
+              6 thẻ đánh giá thực tế. Carousel infinite-loop bằng JS (main.js).
+         ====================================================================== -->
+    <section class="testimonials-section" aria-label="Đánh giá từ khách hàng thực tế">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <div class="section-subtitle" data-animate>Khách hàng nói gì</div>
+            <h2 data-animate data-animate-delay="1">Hơn 250+ Tín Đồ Cà Phê Tin Tưởng Mỗi Tuần</h2>
+          </div>
+        </div>
+
+        <!-- Khung chứa danh sách đánh giá khách hàng (Carousel Track) -->
+        <div class="testimonials-track-wrapper" data-animate>
+          <div class="testimonials-track" id="testimonials-track">
+
+            <!-- Card Đánh giá 1 -->
+            <article class="testimonial-card">
+              <div class="stars-row" aria-label="5 sao">★★★★★</div>
+              <blockquote class="testimonial-quote">❝ Bạc xỉu sữa dừa ở đây đỉnh thật sự! Cốt dừa béo ngậy mà vị cà phê vẫn đậm đà, không bị ngọt gắt. Giao 12 phút tới văn phòng đá vẫn chưa tan chút nào. Đặt đều mỗi sáng! ❞</blockquote>
+              <div class="testimonial-author">
+                <img loading="lazy"
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80"
+                  alt="Nguyễn Văn Hùng" class="author-avatar" />
+                <div class="author-info">
+                  <h4>Nguyễn Văn Hùng</h4>
+                  <p>Cầu Giấy, Hà Nội · Khách hàng thân thiết</p>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card Đánh giá 2 -->
+            <article class="testimonial-card">
+              <div class="stars-row" aria-label="5 sao">★★★★★</div>
+              <blockquote class="testimonial-quote">❝ Cà phê muối chuẩn vị miền Trung, lớp kem mặn béo mịn mê ly. Mã KTDCOFFEE20 giảm 20% mỗi sáng rất tiết kiệm. Sẽ là lựa chọn số 1 mỗi khi cần tỉnh táo làm việc! ❞</blockquote>
+              <div class="testimonial-author">
+                <img loading="lazy"
+                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80"
+                  alt="Trần Thị Mai" class="author-avatar" />
+                <div class="author-info">
+                  <h4>Trần Thị Mai</h4>
+                  <p>Bình Thạnh, TP.HCM · Đã đặt 28 lần</p>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card Đánh giá 3 -->
+            <article class="testimonial-card">
+              <div class="stars-row" aria-label="5 sao">★★★★★</div>
+              <blockquote class="testimonial-quote">❝ Cold Brew Cam Sả uống siêu thanh mát cho ngày làm việc dài. Bánh Croissant bơ Pháp nướng nóng giòn rụm giao kèm ăn rất hợp. 10/10 không có gì để chê được! ❞</blockquote>
+              <div class="testimonial-author">
+                <img loading="lazy"
+                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80"
+                  alt="Lê Quang Minh" class="author-avatar" />
+                <div class="author-info">
+                  <h4>Lê Quang Minh</h4>
+                  <p>Hải Châu, Đà Nẵng · Freelancer & Reviewer</p>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card Đánh giá 4 -->
+            <article class="testimonial-card">
+              <div class="stars-row" aria-label="5 sao">★★★★★</div>
+              <blockquote class="testimonial-quote">❝ Trà Đào Cam Sả giải nhiệt siêu đỉnh, miếng đào giòn sần sật. Đóng gói ly giấy thân thiện môi trường, shipper nhiệt tình giao đúng 13 phút. Rất hài lòng! ❞</blockquote>
+              <div class="testimonial-author">
+                <img loading="lazy"
+                  src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&auto=format&fit=crop&q=80"
+                  alt="Phạm Phương Anh" class="author-avatar" />
+                <div class="author-info">
+                  <h4>Phạm Phương Anh</h4>
+                  <p>Quận 1, TP.HCM · Marketing Lead</p>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card Đánh giá 5 -->
+            <article class="testimonial-card">
+              <div class="stars-row" aria-label="5 sao">★★★★★</div>
+              <blockquote class="testimonial-quote">❝ Đặt combo cà phê và bánh cho cuộc họp sáng công ty 15 người. Giao đúng 15 phút, tách riêng đá và cà phê chu đáo. Cả phòng ai cũng khen ngon nức nở! ❞</blockquote>
+              <div class="testimonial-author">
+                <img loading="lazy"
+                  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=80"
+                  alt="Hoàng Quốc Bảo" class="author-avatar" />
+                <div class="author-info">
+                  <h4>Hoàng Quốc Bảo</h4>
+                  <p>Thanh Xuân, Hà Nội · Đặt tiệc văn phòng</p>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card Đánh giá 6 -->
+            <article class="testimonial-card">
+              <div class="stars-row" aria-label="5 sao">★★★★★</div>
+              <blockquote class="testimonial-quote">❝ Caramel Macchiato thơm ngậy mùi bơ caramel nướng, vị ngọt thanh tự nhiên. Thanh toán VietQR cực kỳ tiện lợi và nhanh chóng! ❞</blockquote>
+              <div class="testimonial-author">
+                <img loading="lazy"
+                  src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=100&auto=format&fit=crop&q=80"
+                  alt="Đỗ Thu Thảo" class="author-avatar" />
+                <div class="author-info">
+                  <h4>Đỗ Thu Thảo</h4>
+                  <p>Sơn Trà, Đà Nẵng · Khách hàng mới</p>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- Nút điều hướng Carousel (<, >, Dots) -->
+        <div class="testimonials-controls">
+          <button type="button" class="testimonial-nav-btn" id="testimonial-prev" aria-label="Đánh giá trước">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <button type="button" class="testimonial-dot active" data-idx="0" aria-label="Đánh giá 1 của 6"></button>
+          <button type="button" class="testimonial-dot" data-idx="1" aria-label="Đánh giá 2 của 6"></button>
+          <button type="button" class="testimonial-dot" data-idx="2" aria-label="Đánh giá 3 của 6"></button>
+          <button type="button" class="testimonial-dot" data-idx="3" aria-label="Đánh giá 4 của 6"></button>
+          <button type="button" class="testimonial-dot" data-idx="4" aria-label="Đánh giá 5 của 6"></button>
+          <button type="button" class="testimonial-dot" data-idx="5" aria-label="Đánh giá 6 của 6"></button>
+          <button type="button" class="testimonial-nav-btn" id="testimonial-next" aria-label="Đánh giá tiếp theo">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         BANNER KHUYếN MÃI (PROMO CALL TO ACTION)
+              Form đăng ký email nhận voucher 30.000đ và ưu đãi thành viên mới.
+         ====================================================================== -->
+    <section class="promo-cta-section" aria-label="Ưu đãi thành viên mới">
+      <div class="container" data-animate>
+        <div class="promo-cta-box">
+          <h2>Nhận Ngay Voucher Giảm 30.000đ</h2>
+          <p>Đăng ký email để nhận ngay mã ưu đãi cho ly cà phê đầu tiên cùng những chương trình khuyến mãi độc quyền mỗi tuần!</p>
+          <form class="promo-cta-form newsletter-form-wrapper" action="#" onsubmit="event.preventDefault();">
+            <label for="promo-email-input" class="sr-only">Địa chỉ email nhận ưu đãi</label>
+            <input id="promo-email-input" type="email" placeholder="Nhập email của bạn..." class="form-control newsletter-input"
+              aria-label="Địa chỉ email nhận ưu đãi" required />
+            <button type="submit" class="btn btn-primary newsletter-submit-btn">
+              <span>Nhận Mã Ngay</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       6. BẢNG TRƯỢT GIỎ HÀNG (SLIDE-OVER CART DRAWER)
+          Trượt từ cạnh phải, chứa danh sách món, thanh tiến trình freeship.
+       ======================================================================== -->
+  <div class="drawer-backdrop" id="cart-backdrop" aria-hidden="true"></div>
+
+  <aside class="cart-drawer" id="cart-drawer" role="dialog" aria-modal="true" aria-label="Giỏ hàng của bạn"
+    aria-hidden="true">
+    <div class="drawer-header">
+      <div class="drawer-title-group">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        <h3 class="drawer-title-text">Đơn Hàng Của Bạn</h3>
+      </div>
+      <button class="close-btn" id="close-cart-btn" aria-label="Đóng giỏ hàng">✕</button>
+    </div>
+
+    <!-- Free Shipping Progress Tracker -->
+    <div class="free-shipping-box" aria-live="polite">
+      <div class="shipping-msg" id="free-shipping-msg">
+        Thêm <strong>30.000đ</strong> để được <strong>Miễn Phí Giao Hàng!</strong>
+      </div>
+      <div class="progress-track" aria-hidden="true">
+        <div class="progress-bar-fill" id="free-shipping-fill"></div>
+      </div>
+    </div>
+
+    <!-- Cart Item List Container -->
+    <div class="cart-items-body" id="cart-items-container">
+      <!-- Rendered dynamically by script.js -->
+    </div>
+
+    <!-- Empty Cart State -->
+    <div class="empty-cart-state is-hidden" id="empty-cart-state">
+      <div class="empty-cart-icon" aria-hidden="true"><i data-lucide="shopping-bag"></i></div>
+      <h3>Giỏ Hàng Đang Trống</h3>
+      <p>Bạn chưa thêm thức uống nào vào giỏ. Hãy dạo quanh thực đơn để chọn ly cà phê thơm ngon nhé!</p>
+      <a href="menu.html" class="btn btn-primary btn-sm" onclick="if (document.getElementById('close-cart-btn')) document.getElementById('close-cart-btn').click();">
+        Khám Phá Thực Đơn Cà Phê
+      </a>
+    </div>
+
+    <!-- Drawer Summary & Checkout CTA -->
+    <div class="drawer-footer">
+      <div class="summary-row">
+        <span>Tạm tính thức uống:</span>
+        <span id="cart-subtotal-price" class="cart-subtotal-price">0đ</span>
+      </div>
+      <div class="summary-row total-row">
+        <span>Tổng cộng:</span>
+        <span class="price-text" id="cart-total-price">0đ</span>
+      </div>
+      <button class="btn btn-primary btn-checkout-submit" id="btn-proceed-checkout">
+        <span>Tiến Hành Đặt Hàng</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ========================================================================
+       7. PRODUCT DETAIL & CUSTOMIZATION MODAL
+       ======================================================================== -->
+  <div class="drawer-backdrop" id="modal-backdrop" aria-hidden="true"></div>
+
+  <div class="modal-wrapper" id="product-detail-modal" role="dialog" aria-modal="true" aria-labelledby="detail-title">
+    <div class="modal-card product-modal-card">
+      <button type="button" class="close-btn modal-close-icon" id="close-detail-btn"
+        aria-label="Đóng bảng tùy chỉnh">✕</button>
+
+      <!-- Scrollable Modal Content -->
+      <div class="detail-modal-body">
+        <!-- Hero Product Info Banner -->
+        <div class="detail-hero-banner">
+          <div class="detail-image-box">
+            <img loading="lazy" id="detail-image" src="https://images.unsplash.com/photo-1541167760496-1628856ab772?w=600&auto=format&fit=crop&q=80" alt="Chi tiết thức uống" />
+          </div>
+          <div class="detail-header-info">
+            <div class="detail-badges-row">
+              <span class="detail-rating-pill" id="detail-rating">★ 4.9 (185+ đánh giá)</span>
+            </div>
+            <h2 id="detail-title">Bạc Xỉu Sữa Dừa Kem Béo</h2>
+            <p class="detail-desc-text" id="detail-desc">
+              Hạt Robusta Cầu Đất đậm đà kết hợp sữa đặc ngọt thanh, cốt dừa Bến Tre béo ngậy và lớp foam bồng bềnh.
+            </p>
+          </div>
+        </div>
+
+        <!-- Size Selection Section -->
+        <div class="customizer-section">
+          <div class="section-title-wrap">
+            <h4 class="customizer-title">Chọn Kích Cỡ</h4>
+            <span class="badge-required">Bắt buộc</span>
+          </div>
+          <div class="option-radio-group">
+            <label class="option-card-item">
+              <input type="radio" name="product-size" value="standard" checked />
+              <div class="option-card-content">
+                <div class="option-left">
+                  <span class="custom-radio-indicator" aria-hidden="true"></span>
+                  <div class="option-text-group">
+                    <span class="opt-name">Tiêu chuẩn (Size M)</span>
+                    <span class="opt-sub">Ly 350ml chuẩn vị thơm ngon</span>
+                  </div>
+                </div>
+                <span class="opt-price-tag">+0đ</span>
+              </div>
+            </label>
+
+            <label class="option-card-item">
+              <input type="radio" name="product-size" value="large" />
+              <div class="option-card-content">
+                <div class="option-left">
+                  <span class="custom-radio-indicator" aria-hidden="true"></span>
+                  <div class="option-text-group">
+                    <span class="opt-name">Cỡ Lớn (Size L)</span>
+                    <span class="opt-sub">Ly 500ml gấp đôi năng lượng ngày mới</span>
+                  </div>
+                </div>
+                <span class="opt-price-tag highlight">+12.000đ</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Topping Selection Section -->
+        <div class="customizer-section">
+          <div class="section-title-wrap">
+            <h4 class="customizer-title">Chọn Thêm Topping & Kem Béo</h4>
+            <span class="badge-optional">Tùy chọn</span>
+          </div>
+          <div class="option-checkbox-group topping-list" id="detail-toppings-container">
+            <!-- Dynamic topping checkboxes -->
+          </div>
+        </div>
+
+        <!-- Special Notes Section -->
+        <div class="customizer-section">
+          <div class="section-title-wrap">
+            <h4 class="customizer-title">Ghi Chú Cho Barista</h4>
+            <span class="badge-optional">Tùy chọn</span>
+          </div>
+          <div class="note-input-wrapper">
+            <textarea id="detail-special-notes" class="note-textarea"
+              placeholder="Ví dụ: Ít ngọt 50% đường, không đá, nhiều sữa dừa, mang ống hút giấy..." rows="2" maxlength="200"
+              aria-label="Ghi chú đặc biệt cho món"></textarea>
+            <span class="note-icon" aria-hidden="true">📝</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sticky Bottom Action Footer -->
+      <div class="modal-footer-sticky">
+        <div class="qty-stepper-modal">
+          <button class="btn-qty" id="detail-qty-minus" aria-label="Giảm số lượng">-</button>
+          <span class="qty-display" id="detail-qty-val">1</span>
+          <button class="btn-qty" id="detail-qty-plus" aria-label="Tăng số lượng">+</button>
+        </div>
+
+        <button class="btn btn-primary btn-add-modal-action" id="btn-detail-add-to-cart">
+          <div class="btn-add-left">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+            <span>Thêm Vào Giỏ</span>
+          </div>
+          <span class="modal-price-pill" id="detail-total-price">39.000đ</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       8. MULTI-STEP CHECKOUT MODAL
+       ======================================================================== -->
+  <div class="drawer-backdrop" id="checkout-backdrop" aria-hidden="true"></div>
+
+  <div class="modal-wrapper" id="checkout-modal" role="dialog" aria-modal="true" aria-labelledby="checkout-modal-title">
+    <div class="modal-card checkout-modal-card">
+      <button type="button" class="close-btn modal-close-icon" id="close-checkout-btn"
+        aria-label="Đóng thanh toán">✕</button>
+
+      <!-- Step Indicator Bar -->
+      <div class="checkout-steps-bar">
+        <div class="step-indicator active" data-step="1">
+          <span class="step-number">1</span>
+          <span>Giao Hàng</span>
+        </div>
+        <div class="step-indicator" data-step="2">
+          <span class="step-number">2</span>
+          <span>Thanh Toán</span>
+        </div>
+        <div class="step-indicator" data-step="3">
+          <span class="step-number">3</span>
+          <span>Xác Nhận</span>
+        </div>
+        <div class="step-indicator" data-step="4">
+          <span class="step-number">4</span>
+          <span>Theo Dõi</span>
+        </div>
+      </div>
+
+      <!-- STEP 1: Delivery Info -->
+      <div class="checkout-step-body active" data-step="1">
+        <h3 class="modal-step-title">1. Thông Tin Nhận Hàng</h3>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label class="form-label" for="checkout-name">Họ và tên người nhận *</label>
+            <input type="text" id="checkout-name" class="form-control" placeholder="Nguyễn Văn A" required
+              value="Nguyễn Văn A" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="checkout-phone">Số điện thoại liên hệ *</label>
+            <input type="tel" id="checkout-phone" class="form-control" placeholder="0901234567" required
+              value="0987654321" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="checkout-address">Địa chỉ nhận hàng chi tiết *</label>
+          <input type="text" id="checkout-address" class="form-control"
+            placeholder="Số nhà, tên đường, Tòa nhà/Công ty, Phường/Xã, Quận/Huyện..." required
+            value="123 Đường Nguyễn Huệ, Phường Bến Nghé, Quận 1, TP.HCM" />
+        </div>
+
+        <div class="modal-address-group">
+          <span class="modal-address-label">Gợi ý địa chỉ mẫu:</span>
+          <button type="button" class="btn btn-outline btn-sm sample-address-chip"
+            data-address="123 Đường Nguyễn Huệ, Quận 1, TP.HCM">Quận 1, TP.HCM</button>
+          <button type="button" class="btn btn-outline btn-sm sample-address-chip"
+            data-address="88 Cầu Giấy, Phường Dịch Vọng, Cầu Giấy, Hà Nội">Cầu Giấy, Hà Nội</button>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="checkout-notes">Ghi chú giao hàng (Tùy chọn)</label>
+          <input type="text" id="checkout-notes" class="form-control"
+            placeholder="Ví dụ: Giao lên tầng 5 sảnh văn phòng, gọi điện trước khi tới..." />
+        </div>
+
+        <div class="modal-step-actions">
+          <button class="btn btn-primary" id="btn-step1-next">
+            <span>Tiếp Tục: Chọn Phương Thức Thanh Toán</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 2: Payment Methods -->
+      <div class="checkout-step-body" data-step="2">
+        <h3 class="modal-step-title">2. Phương Thức Thanh Toán</h3>
+
+        <div class="payment-methods-grid">
+          <!-- VietQR Instant -->
+          <div class="payment-card-option selected" data-method="vietqr">
+            <div class="payment-logo">
+              <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="36" height="36" rx="8" fill="#005BAA"/>
+                <rect x="7" y="7" width="8" height="8" rx="2" stroke="white" stroke-width="2"/>
+                <rect x="9.5" y="9.5" width="3" height="3" fill="white"/>
+                <rect x="21" y="7" width="8" height="8" rx="2" stroke="white" stroke-width="2"/>
+                <rect x="23.5" y="9.5" width="3" height="3" fill="white"/>
+                <rect x="7" y="21" width="8" height="8" rx="2" stroke="white" stroke-width="2"/>
+                <rect x="9.5" y="23.5" width="3" height="3" fill="white"/>
+                <path d="M21 21h3v3h-3zM26 21h3v3h-3zM21 26h3v3h-3zM26 26h3v3h-3z" fill="#FFD200"/>
+              </svg>
+            </div>
+            <div>
+              <div class="payment-method-title">Chuyển khoản QR (VietQR)</div>
+              <div class="payment-method-desc">Quét mã ngân hàng qua app</div>
+            </div>
+          </div>
+
+          <!-- MoMo -->
+          <div class="payment-card-option" data-method="momo">
+            <div class="payment-logo">
+              <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="36" height="36" rx="8" fill="#A50064"/>
+                <path d="M9 11h4.2l3.8 6 3.8-6H25v14h-3.6v-8.2l-3.6 5.6h-1.6L12.6 16.8V25H9V11z" fill="white"/>
+              </svg>
+            </div>
+            <div>
+              <div class="payment-method-title">Ví điện tử MoMo</div>
+              <div class="payment-method-desc">Thanh toán một chạm</div>
+            </div>
+          </div>
+
+          <!-- ZaloPay -->
+          <div class="payment-card-option" data-method="zalopay">
+            <div class="payment-logo">
+              <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="36" height="36" rx="8" fill="#0068FF"/>
+                <path d="M8 11h14.5l-9.8 11.2H25V25H8.5l9.8-11.2H8V11z" fill="white"/>
+                <circle cx="27" cy="11" r="2.5" fill="#00BE00"/>
+              </svg>
+            </div>
+            <div>
+              <div class="payment-method-title">Ví ZaloPay</div>
+              <div class="payment-method-desc">Ưu đãi hoàn tiền</div>
+            </div>
+          </div>
+
+          <!-- Cash on Delivery -->
+          <div class="payment-card-option" data-method="cod">
+            <div class="payment-logo">
+              <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="36" height="36" rx="8" fill="#10B981"/>
+                <rect x="7" y="11" width="22" height="14" rx="2" stroke="white" stroke-width="2"/>
+                <circle cx="18" cy="18" r="3.5" stroke="white" stroke-width="2"/>
+                <path d="M10 18h.01M26 18h.01" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <div class="payment-method-title">Tiền Mặt (COD)</div>
+              <div class="payment-method-desc">Thanh toán khi nhận đồ uống</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 1. VietQR Dynamic Box -->
+        <div class="qr-payment-showcase" id="vietqr-showcase">
+          <div class="payment-method-header">
+            <span class="badge-vietqr">VIETQR</span>
+            <h4 class="payment-method-title">Chuyển Khoản Ngân Hàng Tự Động</h4>
+          </div>
+          <img loading="lazy" id="qr-code-img"
+            src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=KTDCOFFEE_PAYMENT_ORDER_9824"
+            alt="Mã QR Chuyển khoản VietQR" class="qr-code-image" />
+          <p class="payment-method-note">
+            Mở app ngân hàng quét mã để thanh toán tự động với số tiền chính xác
+          </p>
+          <div class="payment-account-details">
+            <div class="payment-account-row">
+              <span class="payment-account-label">Ngân hàng:</span>
+              <span class="payment-account-value">MB Bank (Quân Đội)</span>
+            </div>
+            <div class="payment-account-row">
+              <span class="payment-account-label">Số tài khoản:</span>
+              <span class="payment-account-value">9999 8888 6666</span>
+            </div>
+            <div class="payment-account-row">
+              <span class="payment-account-label">Chủ tài khoản:</span>
+              <span class="payment-account-value">KTD COFFEE</span>
+            </div>
+            <div class="payment-account-row">
+              <span class="payment-account-label">Số tiền:</span>
+              <span class="payment-account-value highlight" id="modal-vietqr-amount">0đ</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. MoMo Showcase Box -->
+        <div class="qr-payment-showcase is-hidden" id="momo-showcase">
+          <div class="payment-method-header">
+            <span class="badge-momo">VÍ MOMO</span>
+            <h4 class="payment-method-title">Quét Mã Hoặc Chuyển Tiền MoMo</h4>
+          </div>
+          <img loading="lazy" id="momo-qr-img"
+            src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=2|99|0901234567|DO%20MINH%20KHOA|ktdcoffee@gmail.com|0|0|50000|KTD_COFFEE"
+            alt="Mã QR Ví MoMo" class="qr-code-image" />
+          <p class="payment-method-note">
+            Mở ứng dụng MoMo chọn "Quét Mã" hoặc chuyển tiền tới số điện thoại bên dưới
+          </p>
+          <div class="payment-account-details">
+            <div class="payment-account-row">
+              <span class="payment-account-label">Số điện thoại MoMo:</span>
+              <span class="payment-account-value">0901 234 567</span>
+            </div>
+            <div class="payment-account-row">
+              <span class="payment-account-label">Chủ ví nhận:</span>
+              <span class="payment-account-value">ĐỖ MINH KHOA (KTD-COFFEE)</span>
+            </div>
+            <div class="payment-account-row">
+              <span class="payment-account-label">Số tiền:</span>
+              <span class="payment-account-value highlight" id="modal-momo-amount">0đ</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. ZaloPay Showcase Box -->
+        <div class="qr-payment-showcase is-hidden" id="zalopay-showcase">
+          <div class="payment-method-header">
+            <span class="badge-zalopay">ZALOPAY</span>
+            <h4 class="payment-method-title">Quét Mã Thanh Toán ZaloPay</h4>
+          </div>
+          <img loading="lazy" id="zalopay-qr-img"
+            src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://zalopay.vn/pay?amount=50000&note=KTD_COFFEE"
+            alt="Mã QR Ví ZaloPay" class="qr-code-image" />
+          <p class="payment-method-note">
+            Mở Zalo hoặc App ZaloPay quét mã QR để nhận ưu đãi hoàn tiền
+          </p>
+          <div class="payment-account-details">
+            <div class="payment-account-row">
+              <span class="payment-account-label">Số tài khoản ZaloPay:</span>
+              <span class="payment-account-value">0901 234 567</span>
+            </div>
+            <div class="payment-account-row">
+              <span class="payment-account-label">Chủ ví ZaloPay:</span>
+              <span class="payment-account-value">KTD-COFFEE OFFICIAL</span>
+            </div>
+            <div class="payment-account-row">
+              <span class="payment-account-label">Số tiền:</span>
+              <span class="payment-account-value highlight" id="modal-zalopay-amount">0đ</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. COD Showcase Box -->
+        <div class="qr-payment-showcase is-hidden" id="cod-showcase">
+          <div class="payment-method-header">
+            <span class="badge-cod">COD</span>
+            <h4 class="payment-method-title">Thanh Toán Tiền Mặt Khi Nhận Hàng</h4>
+          </div>
+          <div class="cod-icon-circle">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="6" width="20" height="12" rx="2"/>
+              <circle cx="12" cy="12" r="2"/>
+              <path d="M6 12h.01M18 12h.01"/>
+            </svg>
+          </div>
+          <p class="cod-instruction-text">
+            Bạn sẽ thanh toán trực tiếp số tiền <strong class="highlight price-text cod-amount-highlight" id="modal-cod-amount">0đ</strong> cho nhân viên giao hàng khi nhận đồ uống.
+          </p>
+        </div>
+
+        <div class="checkout-step-actions--between">
+          <button class="btn btn-outline" id="btn-step2-back">Quay Lại</button>
+          <button class="btn btn-primary" id="btn-step2-next">
+            <span>Tiếp Tục: Kiểm Tra Đơn Hàng</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 3: Order Summary & Voucher -->
+      <div class="checkout-step-body" data-step="3">
+        <h3 class="modal-step-title">3. Tóm Tắt Đơn Hàng & Khuyến Mãi</h3>
+
+        <div class="checkout-summary-card">
+          <div id="order-summary-list">
+            <!-- Dynamic order items -->
+          </div>
+
+          <!-- Voucher Code Input -->
+          <div class="voucher-box-divider">
+            <label class="form-label modal-address-label" for="voucher-input">Mã Giảm Giá /
+              Voucher (Thử: KTDCOFFEE20 hoặc FREESHIP)</label>
+            <div class="voucher-input-group">
+              <input type="text" id="voucher-input" class="form-control" placeholder="NHẬP MÃ: KTDCOFFEE20"
+                value="KTDCOFFEE20" />
+              <button class="btn btn-primary btn-sm" id="btn-apply-voucher">Áp Dụng</button>
+            </div>
+          </div>
+
+          <!-- Total Calculation Rows -->
+          <div class="checkout-totals-group">
+            <div class="summary-row">
+              <span>Tạm tính thức uống:</span>
+              <span id="summary-subtotal-val" class="cart-subtotal-price">39.000đ</span>
+            </div>
+            <div class="summary-row">
+              <span>Phí giao hàng hỏa tốc:</span>
+              <span id="summary-shipping-val">20.000đ</span>
+            </div>
+            <div class="summary-row discount-text-success" id="voucher-discount-row">
+              <span>Mã giảm giá:</span>
+              <span id="voucher-discount-val">-7.800đ</span>
+            </div>
+            <div class="summary-row total-row">
+              <span>Tổng thanh toán:</span>
+              <span class="price-text checkout-final-val" id="summary-final-val">51.200đ</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="checkout-step-actions--between">
+          <button class="btn btn-outline" id="btn-step3-back">Quay Lại</button>
+          <button class="btn btn-primary" id="btn-step3-submit">
+            <span>🎉 Xác Nhận Đặt Hàng Ngay</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 4: Live Order Tracking Status -->
+      <div class="checkout-step-body" data-step="4">
+        <div class="order-tracking-card">
+          <div class="order-success-icon" aria-hidden="true"><i data-lucide="check-circle-2"></i></div>
+          <h2>Đặt Thức Uống Thành Công!</h2>
+          <p class="order-tracking-info-text">
+            Mã đơn hàng: <strong class="order-code-highlight">#KTD-9824</strong> • Thời gian dự kiến: <strong>15
+              phút</strong>
+          </p>
+
+          <!-- Timeline -->
+          <div class="tracking-timeline" role="region" aria-label="Tiến trình đơn hàng">
+            <div class="timeline-step active" data-step="1">
+              <div class="timeline-dot"></div>
+              <h4>1. Đơn hàng đã tiếp nhận</h4>
+              <p>Hệ thống KTD-Coffee đã nhận thông tin và chuyển sang quầy Barista</p>
+            </div>
+
+            <div class="timeline-step" data-step="2">
+              <div class="timeline-dot"></div>
+              <h4>2. Đang chiết xuất & pha chế</h4>
+              <p>Barista đang xay hạt tươi, chiết xuất Espresso và đánh bọt sữa béo</p>
+            </div>
+
+            <div class="timeline-step" data-step="3">
+              <div class="timeline-dot"></div>
+              <h4>3. Bác tài đang giao hỏa tốc</h4>
+              <p>Tài xế Nguyễn Văn B (0912.345.678) đang mang túi giữ nhiệt tới bạn</p>
+            </div>
+
+            <div class="timeline-step" data-step="4">
+              <div class="timeline-dot"></div>
+              <h4>4. Giao hàng thành công</h4>
+              <p>Chúc bạn có một ngày làm việc tràn đầy năng lượng cùng KTD-Coffee!</p>
+            </div>
+          </div>
+
+          <div class="tracking-actions-group">
+            <button class="btn btn-outline btn-sm" id="btn-simulate-tracking">
+              ⚡ Mô phỏng chuyển bước giao hàng
+            </button>
+            <button class="btn btn-primary btn-sm" onclick="document.getElementById('close-checkout-btn').click();">
+              Về Trang Chủ
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       9. TOAST NOTIFICATION CONTAINER
+       ======================================================================== -->
+  <div class="toast-container" id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- ========================================================================
+       10. SITE FOOTER
+       ======================================================================== -->
+  <footer class="site-footer" id="about" aria-label="Chân trang">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Col 1: Brand Info -->
+        <div class="footer-col footer-brand">
+          <a href="index.html" class="brand-logo footer-logo" aria-label="KTD-COFFEE Trang chủ">
+            <img src="assets/images/logo_cafe.svg" alt="KTD-COFFEE Logo" class="brand-logo-img" />
+            <span class="logo-text">KTD<span class="logo-text-accent">-COFFEE</span></span>
+          </a>
+          <p class="footer-desc">
+            KTD-COFFEE là thương hiệu cà phê mộc & trà thủ công tiên phong với 100% hạt Arabica & Robusta Cầu Đất nguyên chất, chiết xuất tươi mới và dịch vụ giao hàng hỏa tốc trong 15 phút.
+          </p>
+          <div class="payment-badges-row" aria-label="Phương thức thanh toán hỗ trợ">
+            <span class="payment-badge-pill"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg> VietQR</span>
+            <span class="payment-badge-pill"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/></svg> MoMo</span>
+            <span class="payment-badge-pill"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> ZaloPay</span>
+            <span class="payment-badge-pill"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg> Visa / Master</span>
+            <span class="payment-badge-pill"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg> COD</span>
+          </div>
+        </div>
+
+        <!-- Col 2: Navigation Links -->
+        <div class="footer-col">
+          <h4>Khám Phá</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Trang Chủ</a></li>
+            <li><a href="menu.html">Thực Đơn Đầy Đủ</a></li>
+            <li><a href="about.html">Về KTD-COFFEE</a></li>
+            <li><a href="contact.html">Liên Hệ & Chi Nhánh</a></li>
+            <li><a href="menu.html">Combo Cà Phê & Bánh 20%</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Policies -->
+        <div class="footer-col">
+          <h4>Chính Sách & Hỗ Trợ</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">Chứng nhận Nguồn gốc Hạt Cầu Đất</a></li>
+            <li><a href="contact.html">Chính sách giao hàng ly giữ nhiệt 15p</a></li>
+            <li><a href="contact.html">Chính sách đổi trả & hoàn tiền</a></li>
+            <li><a href="contact.html">Bảo mật thông tin khách hàng</a></li>
+            <li><a href="contact.html">Câu hỏi thường gặp (FAQ)</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Contact Info -->
+        <div class="footer-col" id="contact">
+          <h4>Tổng Đài & Chi Nhánh</h4>
+          <address class="footer-address">
+            <ul class="footer-links">
+              <li class="footer-contact-hotline">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E58E26" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="footer-hotline-icon"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Hotline: <span class="footer-hotline-num">1900-6868</span>
+              </li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="footer-info-icon"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Phục vụ: 07:00 - 22:30 hàng ngày</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="footer-info-icon"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Chi nhánh 1: 123 Nguyễn Huệ, Quận 1, TP.HCM</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="footer-info-icon"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Chi nhánh 2: 88 Cầu Giấy, Dịch Vọng, Hà Nội</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="footer-info-icon"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Chi nhánh 3: 45 Bạch Đằng, Hải Châu, Đà Nẵng</li>
+              <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="footer-info-icon"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Email: lienhe@ktdcoffee.vn</li>
+            </ul>
+          </address>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom">
+        <div>© 2026 KTD-COFFEE. Tất cả các quyền được bảo lưu. Thiết kế chuẩn WCAG AA.</div>
+        <div class="footer-social-links">
+          <a href="#" class="footer-social-link">Facebook</a>
+          <a href="#" class="footer-social-link">Instagram</a>
+          <a href="#" class="footer-social-link">TikTok</a>
+          <a href="#" class="footer-social-link">YouTube</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ========================================================================
+       AUTH MODAL (SIGNUP - LOGIN - LOGOUT)
+       ======================================================================== -->
+  <div class="modal-wrapper" id="auth-modal" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title">
+    <div class="modal-card auth-modal-card">
+      <button type="button" class="close-btn modal-close-icon" id="close-auth-modal-btn" aria-label="Đóng bảng xác thực">✕</button>
+      
+      <!-- Banner -->
+      <div class="auth-modal-banner">
+        <h2 class="auth-modal-title" id="auth-modal-title">KTD-COFFEE</h2>
+        <p class="auth-modal-sub">Trải nghiệm cà phê mộc & nhận ưu đãi thành viên</p>
+      </div>
+
+      <!-- Tabs -->
+      <div class="auth-tabs" role="tablist">
+        <button type="button" class="auth-tab-btn active" id="auth-tab-login-btn" role="tab" aria-selected="true">Đăng Nhập</button>
+        <button type="button" class="auth-tab-btn" id="auth-tab-register-btn" role="tab" aria-selected="false">Đăng Ký</button>
+      </div>
+
+      <!-- Body -->
+      <div class="auth-modal-body">
+        <!-- Form Đăng Nhập -->
+        <form class="auth-form-panel active" id="auth-login-form" novalidate>
+          <div class="auth-form-group">
+            <label for="login-contact">Email hoặc Số điện thoại *</label>
+            <div class="auth-input-wrapper">
+              <input type="text" id="login-contact" placeholder="VD: 0912345678 hoặc user@example.com" autocomplete="username" />
+            </div>
+            <span class="error-msg" id="login-contact-err"></span>
+          </div>
+
+          <div class="auth-form-group">
+            <label for="login-password">Mật khẩu *</label>
+            <div class="auth-input-wrapper">
+              <input type="password" id="login-password" placeholder="Nhập mật khẩu của bạn" autocomplete="current-password" />
+            </div>
+            <span class="error-msg" id="login-password-err"></span>
+          </div>
+
+          <button type="submit" class="btn-auth-submit">Đăng Nhập Ngay</button>
+
+          <p class="auth-switch-prompt">
+            Chưa có tài khoản? <span class="auth-switch-link" id="switch-to-register">Đăng ký ngay</span>
+          </p>
+        </form>
+
+        <!-- Form Đăng Ký -->
+        <form class="auth-form-panel" id="auth-register-form" novalidate>
+          <div class="auth-form-group">
+            <label for="reg-fullname">Họ và tên *</label>
+            <div class="auth-input-wrapper">
+              <input type="text" id="reg-fullname" placeholder="VD: Nguyễn Văn A" autocomplete="name" />
+            </div>
+            <span class="error-msg" id="reg-fullname-err"></span>
+          </div>
+
+          <div class="auth-form-group">
+            <label for="reg-contact">Email hoặc Số điện thoại *</label>
+            <div class="auth-input-wrapper">
+              <input type="text" id="reg-contact" placeholder="VD: 0912345678 hoặc user@example.com" autocomplete="email" />
+            </div>
+            <span class="error-msg" id="reg-contact-err"></span>
+          </div>
+
+          <div class="auth-form-group">
+            <label for="reg-password">Mật khẩu *</label>
+            <div class="auth-input-wrapper">
+              <input type="password" id="reg-password" placeholder="Ít nhất 6 ký tự" autocomplete="new-password" />
+            </div>
+            <span class="error-msg" id="reg-password-err"></span>
+          </div>
+
+          <div class="auth-form-group">
+            <label for="reg-confirm-password">Xác nhận mật khẩu *</label>
+            <div class="auth-input-wrapper">
+              <input type="password" id="reg-confirm-password" placeholder="Nhập lại mật khẩu phía trên" autocomplete="new-password" />
+            </div>
+            <span class="error-msg" id="reg-confirm-password-err"></span>
+          </div>
+
+          <button type="submit" class="btn-auth-submit">Tạo Tài Khoản Mới</button>
+
+          <p class="auth-switch-prompt">
+            Đã có tài khoản? <span class="auth-switch-link" id="switch-to-login">Đăng nhập</span>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Application Script -->
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+
+</html>

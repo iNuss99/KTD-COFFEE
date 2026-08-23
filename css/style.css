@@ -1,0 +1,25 @@
+/* ==========================================================================
+   KTD-FOOD - TỆP MẸ NHẬP TẤT CẢ CÁC MODULE CSS (MAIN CSS ENTRY)
+   ========================================================================== */
+
+/* 1. Biến hệ thống & Style cơ bản (Design Tokens & Reset CSS) */
+@import './base/variables.css';
+@import './base/base.css';
+@import './base/state.css';    /* Class trạng thái động (Dynamic States) */
+
+/* 2. Thành phần giao diện dùng chung (UI Components) */
+@import './components/header.css'; /* Header kính mờ Sticky & Navigation */
+@import './components/footer.css'; /* Footer thông tin chân trang */
+@import './components/card.css';   /* Thẻ sản phẩm Card & Badges */
+@import './components/modal.css';  /* Cart Drawer & Modals */
+@import './components/form.css';   /* Ô nhập liệu & Nút bấm Form */
+@import './components/toast.css';  /* Thông báo thả xuống Toast */
+
+/* 3. Style theo từng trang cụ thể (Page-Specific Styles) */
+@import './pages/home.css';        /* Trang chủ Index */
+@import './pages/menu.css';        /* Trang thực đơn Menu */
+@import './pages/about.css';       /* Trang giới thiệu About */
+@import './pages/contact.css';     /* Trang liên hệ Contact */
+@import './pages/checkout.css';    /* Trang thanh toán Checkout */
+
+
