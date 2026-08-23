@@ -825,7 +825,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const nextBtn = document.getElementById('testimonial-next');
     if (!track) return;
 
-    const total = track.children.length; // Tổng số thẻ đánh giá (6 thẻ)
+    const total = track.children.length; // Tổng số thẻ đánh giá
     let current = 0;
     let timer = null;
 
@@ -838,6 +838,14 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     function slideWidth() { return 100 / visibleCount(); }
 
+    // Ẩn/hiện dấu chấm phù hợp với số trang thực tế của thiết bị
+    function updateDotsVisibility() {
+      const max = Math.max(0, total - visibleCount());
+      dots.forEach((d, i) => {
+        d.style.display = i > max ? 'none' : '';
+      });
+    }
+
     // Hàm di chuyển slider tới vị trí chỉ định (Có xoay vòng Infinite Loop)
     function goTo(idx) {
       const max = Math.max(0, total - visibleCount());
@@ -848,6 +856,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       } else {
         current = idx;
       }
+      updateDotsVisibility();
       track.style.transform = `translateX(-${current * slideWidth()}%)`;
       dots.forEach((d, i) => d.classList.toggle('active', i === current));
     }
@@ -865,7 +874,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     prevBtn?.addEventListener('click', () => { stop(); goTo(current - 1); start(); });
     nextBtn?.addEventListener('click', () => { stop(); goTo(current + 1); start(); });
 
-    // Gán sự kiện click các dấu chấm chuyển slide (Dots 0-5)
+    // Gán sự kiện click các dấu chấm chuyển slide
     dots.forEach(dot => dot.addEventListener('click', () => {
       stop(); goTo(parseInt(dot.dataset.idx, 10)); start();
     }));
@@ -873,8 +882,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Tạm dừng tự động cuộn khi di chuột vào slider
     track.addEventListener('mouseenter', stop);
     track.addEventListener('mouseleave', start);
-    window.addEventListener('resize', () => goTo(current));
+    window.addEventListener('resize', () => {
+      updateDotsVisibility();
+      goTo(current);
+    });
 
+    updateDotsVisibility();
     goTo(0);
     start();
   })();
