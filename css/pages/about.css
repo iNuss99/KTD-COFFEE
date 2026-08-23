@@ -183,7 +183,7 @@
 }
 
 .why-us-section--no-top-padding {
-  padding-top: 0;
+  padding-top: clamp(48px, 5.5vw, 64px);
 }
 
 .about-promo-btn {
