@@ -1292,9 +1292,23 @@
 }
 
 .section-header--center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: var(--space-6);
+}
+
+.section-header--center > div,
+.section-header--center .section-subtitle,
+.section-header--center h2,
+.section-header--center p {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .promo-cta-form.newsletter-form-wrapper {
