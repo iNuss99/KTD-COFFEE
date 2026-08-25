@@ -18,7 +18,7 @@ const PRODUCTS = [
     rating: '4.9★ 185+ đánh giá',    // Chuỗi hiển thị trên badge đánh giá
     ratingVal: 4.9,                   // Giá trị số để sắp xếp theo rating
     desc: 'Hạt Robusta Cầu Đất đậm đà kết hợp sữa đặc ngọt thanh, cốt dừa Bến Tre béo ngậy và lớp foam bồng bềnh.',
-    image: 'https://images.unsplash.com/photo-1541167760496-1628856ab772?w=600&auto=format&fit=crop&q=80',
+    image: 'assets/images/bac-xiu.jpg',
     badge: 'Bestseller',              // Nhãn badge hiển thị trên card sản phẩm
     badgeType: 'gold',                // Kiểu màu badge: 'gold' | 'red' | 'green'
     inStock: true,                    // false → ẩn nút "Thêm", hiện overlay "Hết hàng"
@@ -38,7 +38,7 @@ const PRODUCTS = [
     rating: '4.9★ 240+ đánh giá',
     ratingVal: 4.9,
     desc: 'Cà phê phin truyền thống hòa quyện cùng lớp kem muối mặn mà, béo mịn độc quyền chuẩn vị cung đình.',
-    image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600&auto=format&fit=crop&q=80',
+    image: 'assets/images/ca-phe-muoi.jpg',
     badge: 'Đặc Biệt',
     badgeType: 'gold',
     inStock: true,
@@ -58,7 +58,7 @@ const PRODUCTS = [
     rating: '4.8★ 142+ đánh giá',
     ratingVal: 4.8,
     desc: 'Espresso Arabica nguyên chất thơm lừng, sữa tươi thanh trùng đánh nóng phủ sốt caramel nướng vàng óng.',
-    image: 'https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?w=600&auto=format&fit=crop&q=80',
+    image: 'assets/images/caramel-macchiato.jpg',
     badge: 'Hot Deal',
     badgeType: 'red',
     inStock: true,
@@ -78,7 +78,7 @@ const PRODUCTS = [
     rating: '4.9★ 310+ đánh giá',
     ratingVal: 4.9,
     desc: 'Cà phê Arabica ủ lạnh 18 tiếng chậm rãi, hòa quyện tép cam vàng mọng nước và hương sả tươi sảng khoái.',
-    image: 'https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?w=600&auto=format&fit=crop&q=80',
+    image: 'assets/images/cold-brew.jpg',
     badge: 'Giải Nhiệt',
     badgeType: 'green',
     inStock: true,
@@ -98,7 +98,7 @@ const PRODUCTS = [
     rating: '4.8★ 220+ đánh giá',
     ratingVal: 4.8,
     desc: 'Trà đen hảo hạng ủ mới mỗi sáng, miếng đào ngâm giòn ngọt, lát cam vàng thơm ngát và hương sả dịu êm.',
-    image: 'assets/images/peach-tea.png', // Dùng ảnh local (không phải Unsplash)
+    image: 'assets/images/peach-tea.png',
     badge: 'Thanh Mát',
     badgeType: 'green',
     inStock: true,
@@ -118,7 +118,7 @@ const PRODUCTS = [
     rating: '4.9★ 175+ đánh giá',
     ratingVal: 4.9,
     desc: 'Bánh sừng bò ngàn lớp chuẩn Pháp với bơ cao cấp thơm nức, nướng nóng giòn rụm trước khi giao hàng.',
-    image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=600&auto=format&fit=crop&q=80',
+    image: 'assets/images/croissant.jpg',
     badge: 'Món Kèm Chuẩn',
     badgeType: 'gold',
     inStock: true,
@@ -136,7 +136,7 @@ const PRODUCTS = [
     rating: '4.7★ 95+ đánh giá',
     ratingVal: 4.7,
     desc: 'Sự cân bằng tinh tế giữa 2 shot Espresso đậm đà và sữa tươi Dalat Milk ngọt thanh mịn mượt.',
-    image: 'https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?w=600&auto=format&fit=crop&q=80',
+    image: 'assets/images/latte.jpg',
     badge: 'Mới Ra Mắt',
     badgeType: 'green',
     inStock: true,
@@ -154,7 +154,7 @@ const PRODUCTS = [
     rating: '4.9★ 88+ đánh giá',
     ratingVal: 4.9,
     desc: 'Cold brew ủ lạnh thượng hạng kết hợp kem hạt dẻ cười rang thơm ngậy phiên bản giới hạn mùa này.',
-    image: 'https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?w=600&auto=format&fit=crop&q=80',
+    image: 'assets/images/cold-brew-hazelnut.jpg',
     badge: 'Giới Hạn',
     badgeType: 'gold',
     inStock: false,  // Hết hàng → nút "Thêm" bị vô hiệu hóa, hiện overlay
