@@ -68,6 +68,7 @@
   font-weight: 600;
   font-size: var(--font-size-small);
   white-space: nowrap;
+  flex-shrink: 0;
   scroll-snap-align: start;
   transition: all var(--transition-fast);
 }
@@ -99,6 +100,25 @@
   stroke: currentColor;
   fill: none;
   transition: stroke var(--transition-fast);
+}
+
+@media (max-width: 767px) {
+  .category-pills-list {
+    gap: 6px;
+    padding-bottom: 6px;
+  }
+
+  .category-pill {
+    padding: 7px 13px;
+    font-size: 0.8125rem;
+    gap: 6px;
+  }
+
+  .category-pill .pill-icon [data-lucide],
+  .category-pill .pill-icon svg {
+    width: 15px;
+    height: 15px;
+  }
 }
 
 
@@ -253,6 +273,22 @@
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.sort-icon-inline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.sort-icon-inline [data-lucide],
+.sort-icon-inline svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 2.2;
 }
 
 .sort-select-label {
