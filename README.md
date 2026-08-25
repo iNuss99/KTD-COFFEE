@@ -34,9 +34,9 @@
 **KTD-COFFEE** là một nền tảng web thương mại điện tử chuyên biệt cho chuỗi cà phê rang mộc cao cấp và trà thủ công chuẩn vị Việt (Specialty Coffee & Bakery). Website cung cấp giải pháp đặt hàng trực tuyến toàn diện:
 - Khám phá thức uống hạt Arabica & Robusta Cầu Đất nguyên chất.
 - Tùy biến linh hoạt kích cỡ (Size M / L), Topping (Kem Cheese Macchiato, Shot Espresso, Thạch cà phê, Trân châu 3Q...) và ghi chú mức đường/đá.
-- Quản lý giỏ hàng thông minh với thanh tiến trình Miễn Phí Giao Hàng (Freeship bar).
+- Quản lý giỏ hàng thông minh với thanh tiến trình Miễn Phí Giao Hàng (Freeship bar ngưỡng 150.000đ).
 - Xác thực người dùng Client-Side (Đăng nhập / Đăng ký) với tính năng duy trì phiên làm việc và tự động điền form checkout.
-- Quy trình thanh toán 4 bước trực quan (VietQR tự động tạo mã QR, MoMo, ZaloPay, COD) kèm mô phỏng theo dõi tiến trình pha chế & giao hàng hỏa tốc trong 15 phút.
+- Quy trình thanh toán 4 bước trực quan (VietQR tự động tạo mã QR theo số tiền đơn hàng, MoMo, ZaloPay, COD) kèm mô phỏng theo dõi tiến trình pha chế & giao hàng hỏa tốc trong 15 phút.
 
 ### Thông Tin Thương Hiệu
 - **Thương hiệu:** KTD-COFFEE (Đậm Vị Cà Phê Mộc - Khởi Nguồn Cảm Hứng).
@@ -48,7 +48,7 @@
 ## 💎 2. Điểm Nổi Bật & Triết Lý Thiết Kế (UI/UX)
 
 1. **Hiệu Ứng Điện Ảnh (Cinematic Hero Showcase):**
-   - Video nền độ phân giải cao quay cận cảnh pha chế espresso kết hợp lớp phủ Gradient chuyển màu mềm mại, làm nổi bật thông tin thương hiệu và các nút kêu gọi hành động (CTA).
+   - Video nền độ phân giải cao (`assets/videos/hero-section.mp4`) quay cận cảnh pha chế espresso kết hợp lớp phủ Gradient chuyển màu mềm mại, làm nổi bật thông tin thương hiệu và các nút kêu gọi hành động (CTA).
 2. **Glassmorphism & Micro-Interactions:**
    - Sticky Header với hiệu ứng kính mờ (`backdrop-filter: blur(12px)`).
    - Thẻ sản phẩm với hiệu ứng đổ bóng đa tầng (Elevation Depth), phóng to khi di chuột (Hover Lift) và hiệu ứng nghiêng 3D (3D Tilt effect).
@@ -58,7 +58,7 @@
 4. **Modal Tùy Biến Thức Uống (Drink Customizer):**
    - Lựa chọn kích cỡ (Size M 350ml / Size L 500ml +12.000đ), chọn nhiều topping cùng lúc, nhập ghi chú đặc biệt cho Barista. Giá tiền tự động tính toán và cập nhật theo thời gian thực.
 5. **Quy Trình Thanh Toán 4 Bước (Checkout Wizard):**
-   - **Bước 1:** Nhập thông tin nhận hàng (Họ tên, SĐT, Địa chỉ).
+   - **Bước 1:** Nhập thông tin nhận hàng (Họ tên, SĐT, Địa chỉ, Ghi chú giao hàng).
    - **Bước 2:** Chọn phương thức thanh toán (VietQR tự động tạo mã QR theo giá trị đơn, MoMo, ZaloPay, Tiền mặt COD).
    - **Bước 3:** Áp dụng mã Voucher (`KTDCOFFEE20`, `FREESHIP`) và rà soát đơn hàng.
    - **Bước 4:** Màn hình xác nhận thành công với mã vận đơn tự động (`#KTD-XXXX`) và dòng thời gian (timeline) theo dõi 4 giai đoạn giao hàng 15 phút.
@@ -82,7 +82,7 @@ Dự án được xây dựng theo chuẩn **Vanilla Web Standard** hiện đạ
 
 - **HTML5 Semantic & Accessibility (WCAG AA):** Sử dụng các thẻ cấu trúc chuẩn (`<header>`, `<main>`, `<section>`, `<article>`, `<nav>`, `<aside>`, `<footer>`), nhãn ẩn, và thuộc tính ARIA (`aria-expanded`, `aria-hidden`, `aria-selected`, `aria-live`).
 - **CSS3 Pure (Modular 7-1 Pattern):** Kiến trúc CSS chia nhỏ theo mô-đun (`css/base/`, `css/components/`, `css/pages/`) được nạp qua `css/style.css`. Sử dụng CSS Custom Properties (Variables), Flexbox, CSS Grid, Media Queries đa điểm ngắt.
-- **Vanilla JavaScript (ES6+ Modular):** Phân tách logic theo vai trò (`products.js`, `cart.js`, `auth.js`, `ui.js`, `main.js`), giao tiếp qua Custom Events (`ktd:auth-changed`), bất đồng bộ (`async/await`, `fetch`), LocalStorage API, và IntersectionObserver API.
+- **Vanilla JavaScript (ES6+ Modular):** Phân tách logic theo vai trò (`products.js`, `cart.js`, `auth.js`, `ui.js`, `main.js`), giao tiếp qua Custom Events (`ktd:auth-changed`), bất đồng bộ (`async/await`, `fetch`), LocalStorage API, và Lucide Icons API.
 - **Typography System:**
   - Font tiêu đề: `Plus Jakarta Sans` (Hiện đại, khỏe khoắn).
   - Font nội dung: `Be Vietnam Pro` (Tối ưu hiển thị Tiếng Việt).
@@ -129,9 +129,23 @@ KTD-COFFEE - Prototype/
 │   ├── ui.js               # UI Helpers (Toast, Product detail modal, Dynamic Header/Footer, Mobile drawer)
 │   └── main.js             # Controller chính (Product grid, Search/Filter, Checkout Wizard, Animations)
 └── assets/                 # Tài nguyên đa phương tiện
-    ├── images/             # Hình ảnh logo, đồ uống & trang trí (.svg, .png)
+    ├── images/             # Hình ảnh logo, đồ uống, đội ngũ & thanh toán (.svg, .png, .jpg)
+    │   ├── logo_cafe.svg           # Logo thương hiệu KTD-COFFEE (SVG vector)
+    │   ├── hero-coffee-bg.jpg      # Ảnh nền làm mờ cho Hero section
+    │   ├── bac-xiu.jpg             # Ảnh Bạc Xỉu Sữa Dừa
+    │   ├── ca-phe-muoi.jpg         # Ảnh Cà Phê Muối Xứ Huế
+    │   ├── caramel-macchiato.jpg   # Ảnh Caramel Macchiato Nướng
+    │   ├── cold-brew.jpg           # Ảnh Cold Brew Cam Sả
+    │   ├── cold-brew-hazelnut.jpg  # Ảnh Cold Brew Hạt Dẻ Cười
+    │   ├── croissant.jpg           # Ảnh Bánh Croissant Bơ Pháp
+    │   ├── latte.jpg               # Ảnh Caffe Latte Sữa Tươi
+    │   ├── peach-tea.png           # Ảnh Trà Đào Cam Sả
+    │   ├── barista_dat.png         # Ảnh Head Barista Nguyễn Tấn Đạt
+    │   ├── qgrader_long.png        # Ảnh Q-Grader Lê Hoàng Long
+    │   ├── pastry_trang.png        # Ảnh Pastry Chef Trần Thu Trang
+    │   └── zalopay-qr.jpg          # Ảnh mã QR demo thanh toán ZaloPay
     └── videos/             # Video ẩm thực chất lượng cao (.mp4)
-        └── buger01.mp4     # Video pha chế làm nền cho Hero Section
+        └── hero-section.mp4 # Video pha chế Espresso làm nền cho Hero Section
 ```
 
 ---
@@ -140,16 +154,16 @@ KTD-COFFEE - Prototype/
 
 ### 5.1. Trang Chủ (`index.html`)
 - **Header Glassmorphic:** Tự động nạp qua `loadHeaderDynamic()`, hỗ trợ tự động đánh dấu link active cho trang hiện tại.
-- **Hero Video Showcase:** Video pha chế espresso chất lượng cao, dòng thông điệp *"Đậm Vị Cà Phê Mộc - Khởi Nguồn Cảm Hứng"* và nút chuyển nhanh tới thực đơn.
+- **Hero Video Showcase:** Video pha chế espresso chất lượng cao (`assets/videos/hero-section.mp4`), dòng thông điệp *"Đậm Vị Cà Phê Mộc - Khởi Nguồn Cảm Hứng"* và nút chuyển nhanh tới thực đơn.
 - **Trust Badges (4 Cam kết):** 100% Cà Phê Rang Mộc, Giao Hỏa Tốc 15 Phút, Barista Chuyên Nghiệp SCA, Bao Bì Sinh Thái 100%.
 - **Flash Sale & Bestseller Grid:** Hiển thị danh sách thức uống bán chạy kèm đồng hồ đếm ngược Flash Sale (`initCountdown`).
-- **How It Works (Quy trình 3 bước):** Chọn thức uống $\rightarrow$ Barista chiết xuất tươi $\rightarrow$ Giao ly giữ nhiệt 15 phút.
+- **How It Works (Quy trình 3 bước):** Chọn thức uống → Barista chiết xuất tươi → Giao ly giữ nhiệt 15 phút.
 - **Social Proof Counter:** Animation đếm số tăng dần khi cuộn trang (1.000.000+ Ly cà phê, 99.6% Giao đúng hẹn, 15 Chi nhánh).
 - **Testimonials Carousel:** Slider 6 đánh giá khách hàng với nút Prev/Next, chấm chỉ số (Dots) và cơ chế tự động xoay vòng.
 - **Newsletter Box:** Đăng ký email nhận mã giảm giá `KTDCOFFEE30` (30.000đ).
 
 ### 5.2. Trang Thực Đơn (`menu.html`)
-- **Thanh danh mục (6 Danh mục):** Tất Cả, Cà Phê Truyền Thống (`traditional`), Espresso & Specialty (`espresso`), Cold Brew Ủ Lạnh (`coldbrew`), Trà Trái Cây & Sữa (`tea`), Bánh & Tráng Miệng (`pastry`).
+- **Thanh danh mục (6 Danh mục):** Tất Cả (`all`), Cà Phê Truyền Thống (`traditional`), Espresso & Specialty (`espresso`), Cold Brew Ủ Lạnh (`coldbrew`), Trà Trái Cây & Sữa (`tea`), Bánh & Tráng Miệng (`pastry`).
 - **Bộ lọc & Sắp xếp:** Sắp xếp theo Giá tăng dần (`price-asc`), Giá giảm dần (`price-desc`), Đánh giá cao nhất (`rating-desc`).
 - **Live Search Input:** Tự động lọc sản phẩm trên giao diện và hiển thị dropdown kết quả nhanh khi nhập từ khóa. Hỗ trợ truyền tham số tìm kiếm qua URL `menu.html?search=...`.
 
@@ -169,7 +183,7 @@ KTD-COFFEE - Prototype/
 - Cho phép áp dụng các mã giảm giá, lựa chọn phương thức thanh toán VietQR / MoMo / ZaloPay / COD và theo dõi hành trình đơn hàng real-time.
 
 ### 5.6. Các Modal & Drawer Dùng Chung
-- **Slide-over Cart Drawer (`#cart-drawer`):** Hiển thị danh sách món đã chọn, điều chỉnh số lượng (+/-), xóa món, và tính toán số tiền còn thiếu để được miễn phí giao hàng.
+- **Slide-over Cart Drawer (`#cart-drawer`):** Hiển thị danh sách món đã chọn, điều chỉnh số lượng (+/-), xóa món, và tính toán số tiền còn thiếu để được miễn phí giao hàng (mốc 150.000đ).
 - **Drink Customizer Modal (`#product-detail-modal`):** Cho phép chọn Size (Size M / Size L +12.000đ), tích chọn topping, nhập ghi chú cho Barista và xem tổng tiền tức thì.
 - **Auth Modal (`#auth-modal`):** Chuyển đổi 2 tab Đăng nhập / Đăng ký, hiển thị thông báo lỗi trực tiếp bên dưới các ô input (Inline Validation).
 - **Mobile Nav Left Drawer (`#mobile-nav-drawer`):** Trượt mượt từ bên trái màn hình di động, tích hợp tìm kiếm nhanh, các liên kết điều hướng và khu vực tài khoản người dùng.
@@ -206,7 +220,7 @@ Dữ liệu sản phẩm được lưu trữ tại `js/products.js`:
 ### 6.2. Quản Lý Giỏ Hàng (`ktd_coffee_cart`)
 - Mảng `cart` được lưu tự động vào `localStorage` dưới key `ktd_coffee_cart`.
 - Hằng số cấu hình: `FREE_SHIPPING_THRESHOLD = 150000` (150.000đ) và `STANDARD_SHIPPING_FEE = 20000` (20.000đ).
-- Helper `formatMoney(amount)` hỗ trợ chuyển đổi số nguyên thành chuỗi tiền tệ chuẩn Việt Nam (ví dụ: `39000` $\rightarrow$ `"39.000đ"`).
+- Helper `formatMoney(amount)` hỗ trợ chuyển đổi số nguyên thành chuỗi tiền tệ chuẩn Việt Nam (ví dụ: `39000` → `"39.000đ"`).
 
 ### 6.3. Hệ Thống Xác Thực Tài Khoản (`ktd_users` & `ktd_current_user`)
 - Danh sách tài khoản người dùng đăng ký lưu trữ tại key `ktd_users`.
@@ -216,7 +230,7 @@ Dữ liệu sản phẩm được lưu trữ tại `js/products.js`:
 ### 6.4. Danh Sách Mã Khuyến Mãi Hỗ Trợ
 - `KTDCOFFEE20` / `KTDFOOD20`: Giảm 20% trên tổng giá trị các món trong đơn hàng.
 - `FREESHIP`: Miễn 100% phí giao hàng (Trị giá 20.000đ).
-- `KTDCOFFEE30`: Giảm 30.000đ cho thành viên đăng ký bản tin.
+- `KTDCOFFEE30`: Giảm 30.000đ cho thành viên đăng ký bản tin (khuyến mãi truyền thông).
 
 ---
 
@@ -270,9 +284,9 @@ Sau đó truy cập địa chỉ: `http://localhost:8000` trên trình duyệt w
 | **Mã hóa UTF-8** | ⭐⭐⭐⭐⭐ | 100% tiếng Việt chuẩn UTF-8, không lỗi font, hiển thị sắc nét dấu thanh và icon. |
 | **Giao diện UI** | ⭐⭐⭐⭐⭐ | Phong cách hiện đại, màu sắc hài hòa, hiệu ứng kính mờ glassmorphism và video hero điện ảnh. |
 | **Trải nghiệm UX** | ⭐⭐⭐⭐⭐ | Tùy biến size & topping linh hoạt, giỏ hàng tự động lưu LocalStorage, wizard thanh toán 4 bước. |
-| **Accessibility (WCAG AA)** | ⭐⭐⭐⭐⭐ | Độ tương phản chữ $\ge 4.5:1$, nhãn `<label>`, thuộc tính ARIA (`aria-modal`, `aria-expanded`), hỗ trợ phím ESC. |
-| **Touch Targets (Mobile)** | ⭐⭐⭐⭐⭐ | Đạt kích thước tương tác tối thiểu $44\text{px} \times 44\text{px}$ cho tất cả các nút bấm di động. |
-| **Tương thích Responsive** | ⭐⭐⭐⭐⭐ | Tương thích mượt mà từ thiết bị di động nhỏ ($360\text{px}$) đến màn hình máy tính cao cấp ($4\text{K}$). |
+| **Accessibility (WCAG AA)** | ⭐⭐⭐⭐⭐ | Độ tương phản chữ >= 4.5:1, nhãn `<label>`, thuộc tính ARIA (`aria-modal`, `aria-expanded`), hỗ trợ phím ESC. |
+| **Touch Targets (Mobile)** | ⭐⭐⭐⭐⭐ | Đạt kích thước tương tác tối thiểu 44px x 44px cho tất cả các nút bấm di động. |
+| **Tương thích Responsive** | ⭐⭐⭐⭐⭐ | Tương thích mượt mà từ thiết bị di động nhỏ (360px) đến màn hình máy tính cao cấp (4K). |
 
 ---
 
